@@ -10,30 +10,33 @@ app.listen(3000, () => {
 
 app.get("/getProduct", (req, res, next) => {
     console.log(req.query.ean);
-    //getEanProduct(req.query.ean);
-    getFoodInformation(req.query.ean);
+    getEanProduct(req.query.ean);
+    //getFoodInformation(req.query.ean);
     res.json(data);
 });
 
 //This function will send out a http request to the api with the EAN code thats provided through the url
 function getEanProduct(Ean) {
-
     var opts = {
         hostname: 'api.upcitemdb.com',
-        path: '/prod/trial/lookup?upc=' + Ean,
-        method: 'GET',
+        path: '/prod/trial/lookup',
+        method: 'POST',
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
         }
     }
-    //Place the items from the body that the request returns in the the data variable
-
     var req = https.request(opts, function (res) {
+        console.log('statusCode: ', res.statusCode);
+        console.log('headers: ', res.headers);
         res.on('data', function (d) {
+            console.log('BODY: ' + d);
             data = JSON.parse(d).items[0];
         })
     })
-
+    req.on('error', function (e) {
+        console.log('problem with request: ' + e.message);
+    })
+    req.write('{ "upc": "4002293401102" }')
     req.end()
 }
 
