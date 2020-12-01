@@ -8,9 +8,9 @@ import {DataSource} from "./interfaces/DataSource";
 export async function searchBarcode(barcode: number, datasources: DataSource[]): Promise<FoodProduct[]> {
     const results: FoodProduct[] = []
     for (let d of datasources) {
-        let result = await d.searchBarcode(barcode)
-        for (let r of result) {
-            results.push(r)
+        let dataSourceResults = await d.searchBarcode(barcode)
+        for (let result of dataSourceResults) {
+            results.push(result)
         }
     }
     return results;
