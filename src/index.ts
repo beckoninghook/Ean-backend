@@ -17,7 +17,6 @@ app.get("/getProduct", (req, res, next) => {
 
 //This function will send out a http request to the api with the EAN code thats provided through the url
 function getEanProduct(Ean) {
-
     var opts = {
         hostname: 'api.upcitemdb.com',
         path: '/prod/trial/lookup?upc=' + Ean,
