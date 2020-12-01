@@ -1,0 +1,599 @@
+{
+    "code": "5038862138390",
+    "product": {
+        "labels": "Pur jus",
+        "category_properties": {
+            "ciqual_food_name:en": "Mixed fruits juice, pure juice",
+            "ciqual_food_name:fr": "Jus multifruit, pur jus, standard"
+        },
+        "nucleotides_tags": [],
+        "ingredients_from_palm_oil_tags": [],
+        "amino_acids_prev_tags": [],
+        "expiration_date": "19/02/2017",
+        "countries_hierarchy": ["en:france"],
+        "origins_hierarchy": [],
+        "_keywords": ["fruit-juices-and-nectar", "innocent", "boisson", "et", "aux", "base", "nectar", "pure", "pur", "aliment", "apple", "ju", "fruit", "de", "vegetaux", "multifruit", "raspberry"],
+        "cities_tags": [],
+        "allergens": "",
+        "last_image_dates_tags": ["2019-10-07", "2019-10", "2019"],
+        "debug_param_sorted_langs": ["fr"],
+        "data_quality_bugs_tags": [],
+        "categories_old": "Aliments et boissons à base de végétaux, Boissons, Boissons à base de végétaux, Jus et nectars, Boissons aux fruits, Jus de fruits, Jus multifruits, Jus de fruits pur jus, Jus multifruits pur jus",
+        "last_edit_dates_tags": ["2020-02-26", "2020-02", "2020"],
+        "ingredients_text": "3 pommes pressées (92%), 10 framboises mixées (8%) et antioxydant : acide ascorbique (Vitamine C.)",
+        "categories_hierarchy": ["en:plant-based-foods-and-beverages", "en:beverages", "en:plant-based-beverages", "en:fruit-based-beverages", "en:juices-and-nectars", "en:fruit-juices", "en:multifruit-juices", "en:squeezed-juices", "en:squeezed-multifruit-juices"],
+        "unknown_nutrients_tags": [],
+        "image_front_url": "https://static.openfoodfacts.org/images/products/503/886/213/8390/front_fr.17.400.jpg",
+        "nutrition_data_prepared": "",
+        "ingredients_text_with_allergens": "3 pommes pressées (92%), 10 framboises mixées (8%) et antioxydant : acide ascorbique (Vitamine C.)",
+        "nova_group": 1,
+        "completed_t": 1493635915,
+        "traces_tags": [],
+        "generic_name_fr": "",
+        "pnns_groups_1": "Beverages",
+        "categories_properties_tags": ["all-products", "categories-known", "agribalyse-food-code-2035", "agribalyse-food-code-known", "agribalyse-proxy-food-code-2002", "agribalyse-proxy-food-code-known", "ciqual-food-code-2035", "ciqual-food-code-known", "agribalyse-known", "agribalyse-2035"],
+        "ingredients": [{
+            "percent_min": "92",
+            "rank": 1,
+            "percent_max": "92",
+            "text": "3 pommes pressées",
+            "id": "fr:3 pommes pressées",
+            "percent": "92"
+        }, {
+            "percent_max": "8",
+            "text": "10 framboises mixées",
+            "id": "fr:10 framboises mixées",
+            "percent": "8",
+            "rank": 2,
+            "percent_min": "8"
+        }, {
+            "percent_min": 0,
+            "rank": 3,
+            "percent_max": 0,
+            "has_sub_ingredients": "yes",
+            "text": "antioxydant",
+            "id": "en:antioxidant"
+        }, {
+            "percent_min": 0,
+            "vegan": "yes",
+            "vegetarian": "yes",
+            "text": "acide ascorbique",
+            "percent_max": 0,
+            "has_sub_ingredients": "yes",
+            "id": "en:e300"
+        }, {
+            "vegetarian": "yes",
+            "vegan": "yes",
+            "percent_min": 0,
+            "id": "en:e300",
+            "text": "Vitamine C",
+            "percent_max": 0
+        }],
+        "quantity": "33 cl",
+        "link": "",
+        "nutrition_grade_fr": "c",
+        "misc_tags": ["en:nutrition-fruits-vegetables-nuts", "en:nutrition-all-nutriscore-values-known", "en:nutriscore-computed"],
+        "vitamins_prev_tags": [],
+        "packaging": "Plastique,Bouteille",
+        "fruits-vegetables-nuts_100g_estimate": 100,
+        "brands": "Innocent",
+        "editors": [""],
+        "additives_tags": ["en:e300"],
+        "ingredients_tags": ["fr:3-pommes-pressees", "fr:10-framboises-mixees", "en:antioxidant", "en:e300"],
+        "pnns_groups_1_tags": ["beverages", "known"],
+        "additives_original_tags": ["en:e300"],
+        "purchase_places_tags": ["france", "nantes"],
+        "categories_properties": {
+            "agribalyse_food_code:en": "2035",
+            "ciqual_food_code:en": "2035",
+            "agribalyse_proxy_food_code:en": "2002"
+        },
+        "categories_tags": ["en:plant-based-foods-and-beverages", "en:beverages", "en:plant-based-beverages", "en:fruit-based-beverages", "en:juices-and-nectars", "en:fruit-juices", "en:multifruit-juices", "en:squeezed-juices", "en:squeezed-multifruit-juices"],
+        "serving_size": "150 ml",
+        "countries_tags": ["en:france"],
+        "manufacturing_places": "",
+        "traces_lc": "fr",
+        "correctors_tags": ["kiliweb", "tacite", "openfoodfacts-contributors", "beniben", "yuka.U3YweExZZGNsTVlSdnZFNXdUYloydGhUeWJ1c2JFcTVGOXRBSUE9PQ", "yuka.YkpzYkNJMGNpcUFRc3NVVG9RN2MyTXBsNkxYMmIzbXBHdGRNSVE9PQ", "magasins-u", "desan", "yuka.UmJFZ0gvcFF2TXNzeXNRazJ6VE54dXg2eDVpVVYzaVBEdkVRSVE9PQ", "de-la-villegeorges"],
+        "ciqual_food_name_tags": ["mixed-fruits-juice-pure-juice"],
+        "emb_codes_tags": [],
+        "_id": "5038862138390",
+        "nova_groups": "1",
+        "nutrient_levels": {
+            "saturated-fat": "low",
+            "fat": "low",
+            "sugars": "high",
+            "salt": "low"
+        },
+        "ingredients_n_tags": ["5", "1-10"],
+        "pnns_groups_2": "Fruit juices",
+        "last_image_t": 1570455758,
+        "image_nutrition_small_url": "https://static.openfoodfacts.org/images/products/503/886/213/8390/nutrition_fr.7.200.jpg",
+        "countries": "France",
+        "traces": "",
+        "serving_quantity": 150,
+        "unknown_ingredients_n": 2,
+        "labels_lc": "fr",
+        "nutrition_data": "on",
+        "traces_from_user": "(fr) ",
+        "image_ingredients_url": "https://static.openfoodfacts.org/images/products/503/886/213/8390/ingredients_fr.13.400.jpg",
+        "amino_acids_tags": [],
+        "states_tags": ["en:to-be-checked", "en:complete", "en:nutrition-facts-completed", "en:ingredients-completed", "en:expiration-date-completed", "en:packaging-code-to-be-completed", "en:characteristics-completed", "en:categories-completed", "en:brands-completed", "en:packaging-completed", "en:quantity-completed", "en:product-name-completed", "en:photos-validated", "en:photos-uploaded"],
+        "traces_hierarchy": [],
+        "origins_lc": "fr",
+        "ingredients_from_palm_oil_n": 0,
+        "purchase_places": "France,Nantes",
+        "code": "5038862138390",
+        "labels_hierarchy": ["en:pure-juice"],
+        "popularity_tags": ["top-50000-scans-2019", "top-100000-scans-2019", "at-least-5-scans-2019", "at-least-10-scans-2019", "top-90-percent-scans-2019", "top-95-percent-scans-2019", "top-50000-fr-scans-2019", "top-100000-fr-scans-2019", "top-country-fr-scans-2019", "at-least-5-fr-scans-2019", "at-least-10-fr-scans-2019"],
+        "additives_debug_tags": ["en-e300-removed"],
+        "ingredients_that_may_be_from_palm_oil_tags": [],
+        "ingredients_debug": ["3 pommes pressées ", "(", "(", null, null, "92%)", ",", null, null, null, " 10 framboises mixées ", "(", "(", null, null, "8%) et antioxydant ", ":", ":", null, null, "  acide ascorbique ", "(", "(", null, null, "Vitamine C.)"],
+        "vitamins_tags": [],
+        "ingredients_hierarchy": ["fr:3 pommes pressées", "fr:10 framboises mixées", "en:antioxidant", "en:e300"],
+        "data_sources": "App - yuka, Apps",
+        "emb_codes": "",
+        "compared_to_category": "en:fruit-juices-and-nectars",
+        "origins_old": "",
+        "ingredients_analysis_tags": ["en:palm-oil-content-unknown", "en:vegan-status-unknown", "en:vegetarian-status-unknown"],
+        "nutriscore_score": 2,
+        "categories_lc": "fr",
+        "max_imgid": "5",
+        "editors_tags": ["desan", "magasins-u", "beniben", "kiliweb", "bebone", "yuka.YkpzYkNJMGNpcUFRc3NVVG9RN2MyTXBsNkxYMmIzbXBHdGRNSVE9PQ", "de-la-villegeorges", "yuka.UmJFZ0gvcFF2TXNzeXNRazJ6VE54dXg2eDVpVVYzaVBEdkVRSVE9PQ", "yuka.U3YweExZZGNsTVlSdnZFNXdUYloydGhUeWJ1c2JFcTVGOXRBSUE9PQ", "tacite", "openfoodfacts-contributors"],
+        "codes_tags": ["code-13", "5038862138xxx", "503886213xxxx", "50388621xxxxx", "5038862xxxxxx", "503886xxxxxxx", "50388xxxxxxxx", "5038xxxxxxxxx", "503xxxxxxxxxx", "50xxxxxxxxxxx", "5xxxxxxxxxxxx"],
+        "stores": "Leclerc,Magasins U",
+        "ingredients_percent_analysis": 1,
+        "ingredients_from_or_that_may_be_from_palm_oil_n": 0,
+        "image_small_url": "https://static.openfoodfacts.org/images/products/503/886/213/8390/front_fr.17.200.jpg",
+        "nutrition_grades_tags": ["c"],
+        "sortkey": -98417270992,
+        "languages_codes": {
+            "fr": 5
+        },
+        "checkers_tags": [],
+        "manufacturing_places_tags": [],
+        "nutriscore_grade": "c",
+        "images": {
+            "front": {
+                "geometry": "0x0--8--8",
+                "normalize": null,
+                "imgid": "1",
+                "white_magic": null,
+                "sizes": {
+                    "200": {
+                        "w": 150,
+                        "h": 200
+                    },
+                    "400": {
+                        "h": 400,
+                        "w": 300
+                    },
+                    "full": {
+                        "w": 2448,
+                        "h": 3264
+                    },
+                    "100": {
+                        "h": 100,
+                        "w": 75
+                    }
+                },
+                "rev": "3"
+            },
+            "front_fr": {
+                "y1": null,
+                "rev": "17",
+                "white_magic": "0",
+                "imgid": "4",
+                "x2": null,
+                "geometry": "0x0-0-0",
+                "normalize": "0",
+                "sizes": {
+                    "100": {
+                        "w": 75,
+                        "h": 100
+                    },
+                    "full": {
+                        "w": 901,
+                        "h": 1200
+                    },
+                    "400": {
+                        "w": 300,
+                        "h": 400
+                    },
+                    "200": {
+                        "w": 150,
+                        "h": 200
+                    }
+                },
+                "x1": null,
+                "y2": null,
+                "angle": null
+            },
+            "2": {
+                "uploaded_t": "1485873053",
+                "uploader": "bebone",
+                "sizes": {
+                    "400": {
+                        "h": 400,
+                        "w": 300
+                    },
+                    "full": {
+                        "w": 2000,
+                        "h": 2666
+                    },
+                    "100": {
+                        "w": 75,
+                        "h": 100
+                    }
+                }
+            },
+            "1": {
+                "uploaded_t": 1433590495,
+                "uploader": "openfoodfacts-contributors",
+                "sizes": {
+                    "full": {
+                        "h": 3264,
+                        "w": 2448
+                    },
+                    "100": {
+                        "w": 75,
+                        "h": 100
+                    },
+                    "400": {
+                        "w": 300,
+                        "h": 400
+                    }
+                }
+            },
+            "nutrition_fr": {
+                "geometry": "1094x946-586-925",
+                "normalize": "false",
+                "x2": "252",
+                "imgid": "2",
+                "white_magic": "false",
+                "rev": "7",
+                "y1": "138.8125",
+                "y2": "280.8125",
+                "angle": "0",
+                "orientation": "0",
+                "ocr": 1,
+                "sizes": {
+                    "100": {
+                        "w": 100,
+                        "h": 86
+                    },
+                    "full": {
+                        "w": 1094,
+                        "h": 946
+                    },
+                    "400": {
+                        "h": 346,
+                        "w": 400
+                    },
+                    "200": {
+                        "w": 200,
+                        "h": 173
+                    }
+                },
+                "x1": "88"
+            },
+            "4": {
+                "uploaded_t": "1523521226",
+                "sizes": {
+                    "100": {
+                        "h": 100,
+                        "w": 75
+                    },
+                    "full": {
+                        "w": 901,
+                        "h": 1200
+                    },
+                    "400": {
+                        "w": 300,
+                        "h": 400
+                    }
+                },
+                "uploader": "kiliweb"
+            },
+            "3": {
+                "uploader": "kiliweb",
+                "sizes": {
+                    "400": {
+                        "h": 400,
+                        "w": 300
+                    },
+                    "full": {
+                        "h": 3264,
+                        "w": 2448
+                    },
+                    "100": {
+                        "w": 75,
+                        "h": 100
+                    }
+                },
+                "uploaded_t": "1493572100"
+            },
+            "ingredients_fr": {
+                "angle": "0",
+                "y2": "140.8125",
+                "orientation": "0",
+                "sizes": {
+                    "200": {
+                        "h": 42,
+                        "w": 200
+                    },
+                    "400": {
+                        "h": 85,
+                        "w": 400
+                    },
+                    "100": {
+                        "w": 100,
+                        "h": 21
+                    },
+                    "full": {
+                        "h": 311,
+                        "w": 1469
+                    }
+                },
+                "x1": "47.75",
+                "ocr": 1,
+                "normalize": "false",
+                "geometry": "1469x311-389-838",
+                "x2": "227.75",
+                "imgid": "3",
+                "white_magic": "false",
+                "rev": "13",
+                "y1": "102.8125"
+            },
+            "5": {
+                "sizes": {
+                    "full": {
+                        "h": 1200,
+                        "w": 902
+                    },
+                    "100": {
+                        "w": 75,
+                        "h": 100
+                    },
+                    "400": {
+                        "h": 400,
+                        "w": 301
+                    }
+                },
+                "uploader": "kiliweb",
+                "uploaded_t": 1570455758
+            }
+        },
+        "no_nutrition_data": "",
+        "unique_scans_n": 31,
+        "update_key": "agribalyse1109",
+        "ingredients_text_with_allergens_fr": "3 pommes pressées (92%), 10 framboises mixées (8%) et antioxydant : acide ascorbique (Vitamine C.)",
+        "ingredients_n": 5,
+        "scans_n": 60,
+        "image_nutrition_thumb_url": "https://static.openfoodfacts.org/images/products/503/886/213/8390/nutrition_fr.7.100.jpg",
+        "data_sources_tags": ["app-yuka", "apps"],
+        "other_nutritional_substances_tags": [],
+        "languages_tags": ["en:french", "en:1"],
+        "lang": "fr",
+        "id": "5038862138390",
+        "image_front_small_url": "https://static.openfoodfacts.org/images/products/503/886/213/8390/front_fr.17.200.jpg",
+        "complete": 1,
+        "image_url": "https://static.openfoodfacts.org/images/products/503/886/213/8390/front_fr.17.400.jpg",
+        "countries_lc": "fr",
+        "nutrition_data_prepared_per": "100g",
+        "additives_prev_original_tags": ["en:e300"],
+        "completeness": 0.9,
+        "languages": {
+            "en:french": 5
+        },
+        "ingredients_that_may_be_from_palm_oil_n": 0,
+        "ingredients_text_fr": "3 pommes pressées (92%), 10 framboises mixées (8%) et antioxydant : acide ascorbique (Vitamine C.)",
+        "entry_dates_tags": ["2015-06-06", "2015-06", "2015"],
+        "allergens_from_ingredients": "",
+        "rev": 23,
+        "minerals_prev_tags": [],
+        "languages_hierarchy": ["en:french"],
+        "creator": "openfoodfacts-contributors",
+        "image_ingredients_thumb_url": "https://static.openfoodfacts.org/images/products/503/886/213/8390/ingredients_fr.13.100.jpg",
+        "generic_name": "",
+        "data_quality_warnings_tags": ["en:nutrition-value-under-0-1-g-salt"],
+        "created_t": 1433590493,
+        "ingredients_text_debug_tags": [],
+        "data_quality_info_tags": ["en:ingredients-percent-analysis-ok"],
+        "image_nutrition_url": "https://static.openfoodfacts.org/images/products/503/886/213/8390/nutrition_fr.7.400.jpg",
+        "nucleotides_prev_tags": [],
+        "selected_images": {
+            "nutrition": {
+                "display": {
+                    "fr": "https://static.openfoodfacts.org/images/products/503/886/213/8390/nutrition_fr.7.400.jpg"
+                },
+                "thumb": {
+                    "fr": "https://static.openfoodfacts.org/images/products/503/886/213/8390/nutrition_fr.7.100.jpg"
+                },
+                "small": {
+                    "fr": "https://static.openfoodfacts.org/images/products/503/886/213/8390/nutrition_fr.7.200.jpg"
+                }
+            },
+            "front": {
+                "small": {
+                    "fr": "https://static.openfoodfacts.org/images/products/503/886/213/8390/front_fr.17.200.jpg"
+                },
+                "display": {
+                    "fr": "https://static.openfoodfacts.org/images/products/503/886/213/8390/front_fr.17.400.jpg"
+                },
+                "thumb": {
+                    "fr": "https://static.openfoodfacts.org/images/products/503/886/213/8390/front_fr.17.100.jpg"
+                }
+            },
+            "ingredients": {
+                "display": {
+                    "fr": "https://static.openfoodfacts.org/images/products/503/886/213/8390/ingredients_fr.13.400.jpg"
+                },
+                "thumb": {
+                    "fr": "https://static.openfoodfacts.org/images/products/503/886/213/8390/ingredients_fr.13.100.jpg"
+                },
+                "small": {
+                    "fr": "https://static.openfoodfacts.org/images/products/503/886/213/8390/ingredients_fr.13.200.jpg"
+                }
+            }
+        },
+        "nutriscore_data": {
+            "negative_points": 12,
+            "fruits_vegetables_nuts_colza_walnut_olive_oils": 100,
+            "energy_value": 177,
+            "proteins_value": 0.25,
+            "saturated_fat_points": 0,
+            "grade": "c",
+            "saturated_fat_ratio_value": 100,
+            "sugars_points": 6,
+            "saturated_fat": 0.1,
+            "energy": 177,
+            "is_fat": 0,
+            "energy_points": 6,
+            "fiber_points": 0,
+            "saturated_fat_ratio": 100,
+            "positive_points": 10,
+            "fiber_value": 0.67,
+            "sodium": 4,
+            "proteins": 0.25,
+            "saturated_fat_ratio_points": 10,
+            "sugars_value": 8.9,
+            "fiber": 0.67,
+            "is_beverage": 1,
+            "fruits_vegetables_nuts_colza_walnut_olive_oils_value": 100,
+            "sugars": 8.9,
+            "is_water": 0,
+            "fruits_vegetables_nuts_colza_walnut_olive_oils_points": 10,
+            "is_cheese": 0,
+            "proteins_points": 0,
+            "score": 2,
+            "sodium_points": 0,
+            "saturated_fat_value": 0.1,
+            "sodium_value": 4
+        },
+        "lc": "fr",
+        "popularity_key": -81049999965,
+        "origins_tags": [],
+        "last_editor": "de-la-villegeorges",
+        "product_name_fr": "Pure Jus Apple & Raspberry",
+        "ingredients_text_debug": "3 pommes pressées (92%), 10 framboises mixées (8%) et antioxydant :  acide ascorbique (Vitamine C.)",
+        "informers_tags": ["openfoodfacts-contributors", "kiliweb", "tacite", "beniben", "yuka.U3YweExZZGNsTVlSdnZFNXdUYloydGhUeWJ1c2JFcTVGOXRBSUE9PQ", "desan", "de-la-villegeorges"],
+        "categories": "Aliments et boissons à base de végétaux, Boissons, Boissons à base de végétaux, Jus et nectars, Boissons aux fruits, Jus de fruits, Jus multifruits, Jus de fruits pur jus, Jus multifruits pur jus",
+        "emb_codes_orig": "",
+        "last_modified_t": 1582729008,
+        "stores_tags": ["leclerc", "magasins-u"],
+        "allergens_tags": [],
+        "known_ingredients_n": 2,
+        "allergens_lc": "fr",
+        "additives_old_tags": ["en:e300"],
+        "data_quality_tags": ["en:ingredients-percent-analysis-ok", "en:nutrition-value-under-0-1-g-salt"],
+        "additives_n": 1,
+        "interface_version_created": "20120622",
+        "image_ingredients_small_url": "https://static.openfoodfacts.org/images/products/503/886/213/8390/ingredients_fr.13.200.jpg",
+        "origins": "",
+        "last_modified_by": "de-la-villegeorges",
+        "nutrition_data_per": "100g",
+        "nutriments": {
+            "carbohydrates": 9.6,
+            "saturated-fat": 0.1,
+            "proteins_unit": "g",
+            "vitamin-c_value": 40,
+            "fruits-vegetables-nuts_serving": 100,
+            "energy-kj_value": 177,
+            "sodium_100g": 0.004,
+            "vitamin-c": 0.04,
+            "nutrition-score-fr": 2,
+            "salt_unit": "g",
+            "sugars": 8.9,
+            "salt": 0.01,
+            "fat_100g": 0.1,
+            "carbohydrates_serving": 14.4,
+            "sugars_unit": "g",
+            "carbohydrates_unit": "g",
+            "fiber_serving": 1.01,
+            "sodium_value": 0.004,
+            "salt_100g": 0.01,
+            "energy-kj_unit": "kJ",
+            "saturated-fat_serving": 0.15,
+            "fat": 0.1,
+            "energy-kcal": 42,
+            "saturated-fat_100g": 0.1,
+            "energy-kcal_serving": 63,
+            "fruits-vegetables-nuts_100g": 100,
+            "fat_serving": 0.15,
+            "carbohydrates_value": 9.6,
+            "carbohydrates_100g": 9.6,
+            "sugars_value": 8.9,
+            "energy-kcal_unit": "kcal",
+            "energy-kcal_100g": 42,
+            "vitamin-c_100g": 0.04,
+            "energy_unit": "kJ",
+            "fruits-vegetables-nuts-estimate-from-ingredients_100g": 0,
+            "saturated-fat_unit": "g",
+            "nova-group_serving": 1,
+            "energy-kj_serving": 266,
+            "energy-kj": 177,
+            "vitamin-c_unit": "mg",
+            "fruits-vegetables-nuts": 100,
+            "nova-group": 1,
+            "saturated-fat_value": 0.1,
+            "nutrition-score-fr_100g": 2,
+            "fruits-vegetables-nuts_label": "0",
+            "proteins_serving": 0.375,
+            "energy-kcal_value": 42,
+            "nutrition-score-fr_serving": 2,
+            "salt_value": 0.01,
+            "sodium_serving": 0.006,
+            "fruits-vegetables-nuts_value": 100,
+            "sodium_unit": "g",
+            "energy_100g": 177,
+            "proteins_100g": 0.25,
+            "energy_serving": 266,
+            "energy": 177,
+            "fat_value": 0.1,
+            "nova-group_100g": 1,
+            "proteins_value": 0.25,
+            "vitamin-c_label": "0",
+            "energy_value": 177,
+            "sugars_100g": 8.9,
+            "fiber": 0.67,
+            "fruits-vegetables-nuts_unit": "g",
+            "fat_unit": "g",
+            "sugars_serving": 13.4,
+            "energy-kj_100g": 177,
+            "proteins": 0.25,
+            "fiber_100g": 0.67,
+            "fiber_unit": "g",
+            "fiber_value": 0.67,
+            "vitamin-c_serving": 0.06,
+            "sodium": 0.004,
+            "salt_serving": 0.015
+        },
+        "ingredients_ids_debug": ["3-pommes-pressees", "92", "10-framboises-mixees", "8-et-antioxydant", "acide-ascorbique", "vitamine-c"],
+        "allergens_hierarchy": [],
+        "photographers_tags": ["openfoodfacts-contributors", "bebone", "kiliweb"],
+        "labels_tags": ["en:pure-juice"],
+        "pnns_groups_2_tags": ["fruit-juices", "known"],
+        "product_quantity": 330,
+        "states_hierarchy": ["en:to-be-checked", "en:complete", "en:nutrition-facts-completed", "en:ingredients-completed", "en:expiration-date-completed", "en:packaging-code-to-be-completed", "en:characteristics-completed", "en:categories-completed", "en:brands-completed", "en:packaging-completed", "en:quantity-completed", "en:product-name-completed", "en:photos-validated", "en:photos-uploaded"],
+        "data_quality_errors_tags": [],
+        "additives_old_n": 1,
+        "product_name": "Pure Jus Apple & Raspberry",
+        "image_thumb_url": "https://static.openfoodfacts.org/images/products/503/886/213/8390/front_fr.17.100.jpg",
+        "nutrition_grades": "c",
+        "ingredients_original_tags": ["fr:3 pommes pressées", "fr:10 framboises mixées", "en:antioxidant", "en:e300", "en:e300"],
+        "brands_tags": ["innocent"],
+        "nutrient_levels_tags": ["en:fat-in-low-quantity", "en:saturated-fat-in-low-quantity", "en:sugars-in-high-quantity", "en:salt-in-low-quantity"],
+        "traces_from_ingredients": "",
+        "nova_group_debug": "",
+        "image_front_thumb_url": "https://static.openfoodfacts.org/images/products/503/886/213/8390/front_fr.17.100.jpg",
+        "nutrition_score_beverage": 1,
+        "interface_version_modified": "20190830",
+        "nova_groups_tags": ["en:1-unprocessed-or-minimally-processed-foods"],
+        "minerals_tags": [],
+        "states": "en:to-be-checked, en:complete, en:nutrition-facts-completed, en:ingredients-completed, en:expiration-date-completed, en:packaging-code-to-be-completed, en:characteristics-completed, en:categories-completed, en:brands-completed, en:packaging-completed, en:quantity-completed, en:product-name-completed, en:photos-validated, en:photos-uploaded",
+        "packaging_tags": ["plastique", "bouteille"],
+        "allergens_from_user": "(fr) "
+    },
+    "status": 1,
+    "status_verbose": "product found"
+}
