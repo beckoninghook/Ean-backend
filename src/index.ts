@@ -4,6 +4,9 @@ const app = express();
 const port = 8080; // default port to listen
 let data: any;
 
+//TODO: Clean up, separate things out into files and make it use the method exported from main-search.ts
+//TODO: Create a config file/use some config library?
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
