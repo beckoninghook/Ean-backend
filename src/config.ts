@@ -1,5 +1,5 @@
 import {DataSource} from "./interfaces/DataSource";
-import {UPCitemdb} from "./data-source/UPCitemdb";
+import {OpenFoodFactsDataSource} from "./data-source/OpenFoodFactsDataSource";
 
 /*
 * Add important configuration variables and functions here as they are needed.
@@ -10,7 +10,7 @@ export default class Config {
 
     static useAllDataSources(): DataSource[] {
         return new Array(
-            new UPCitemdb(),
+            new OpenFoodFactsDataSource(),
         )
     }
 }

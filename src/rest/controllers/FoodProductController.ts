@@ -1,4 +1,6 @@
-import axios from 'axios';
+import {FoodProduct} from "../../models/FoodProduct";
+import {DataSource} from "../../interfaces/DataSource";
+import Config from "../../config";
 
 /*
     Main function used by the GET REST endpoint to query a barcode.
@@ -7,42 +9,26 @@ import axios from 'axios';
  */
 export const getBarcode = async (req, res) => {
     console.log(`Received a GET request on /api/foodproduct with barcode number: ${req.query.barcode}`)
-    const data = await getEanProduct(req.query.barcode);
+    const data = await searchBarcode(req.query.barcode, Config.useAllDataSources())
     if (data != null) {
         console.log("Successfully received data from API.")
     }
     res.status(200).send(data)
 }
 
-async function getEanProduct(barcode) {
-/*    var opts = {
-        hostname: 'barcode.monster',
-        path: '/api/' + barcode,
-        method: 'GET',
-    }*/
-    /*    var req = http.request(opts, function (res) {
-            res.on('data', function (d) {
-                const textChunk = d.toString();
-                data = JSON.parse(textChunk);
-            })
-        })
-        req.end()*/
-    const data = await axios.get('https://world.openfoodfacts.org/api/v0/product/' + barcode)
-    return data.data
-}
 
-/*
 async function searchBarcode(barcode: number, datasources: DataSource[]): Promise<FoodProduct[]> {
     const results: FoodProduct[] = []
     for (let d of datasources) {
         let dataSourceResults = await d.searchBarcode(barcode)
+        console.log(dataSourceResults)
         for (let result of dataSourceResults) {
             results.push(result)
         }
     }
     return results;
 }
-*/
+
 
 
 
