@@ -1,9 +1,4 @@
-export interface FoodProduct{
-    id: Number
-    calories: Number
-    carbohydrates: Number
-    label: String
-}
+import {FoodProduct} from "../models/FoodProduct";
 
 function getProducts(): Promise<FoodProduct[]>{
     return fetch('/api/v0/product/')

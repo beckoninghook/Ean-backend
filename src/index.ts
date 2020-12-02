@@ -1,24 +1,27 @@
-const express = require("express");
-const https = require("http");
+import * as express from "express"
+import * as http from "http"
+import Config from "./config";
+
 const app = express();
-const port = 8080; // default port to listen
+const port = Config.DEFAULT_PORT; // default port to listen
 let data: any;
 
 //TODO: Clean up, separate things out into files and make it use the method exported from main-search.ts
+// Make this file use main-search.ts and config.ts for querying the barcode.
 //TODO: Create a config file/use some config library?
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
 
-app.get("/getProduct", (req, res, next) => {
-    console.log(req.query.ean);
-    getEanProduct(req.query.ean);
+app.get("/product", (req, res) => {
+    console.log(req.query.barcode);
+    getEanProduct(req.query.barcode);
     //getFoodInformation(req.query.ean);
     res.json(data);
 });
 
-//This function will send out a http request to the api with the EAN code thats provided through the url
+//This function will send out a http request to the api with the EAN code that's provided through the url
 function getEanProduct(Ean) {
     var opts = {
         hostname: 'api.upcitemdb.com',
@@ -28,7 +31,7 @@ function getEanProduct(Ean) {
             "Content-Type": "application/json"
         }
     }
-    var req = https.request(opts, function (res) {
+    var req = http.request(opts, function (res) {
         console.log('statusCode: ', res.statusCode);
         console.log('headers: ', res.headers);
         res.on('data', function (d) {
@@ -44,7 +47,6 @@ function getEanProduct(Ean) {
 }
 
 //use this function to use the world open food api
-
 function getFoodInformation(Ean) {
     //https://world.openfoodfacts.org/api/v0/product/
     var opts = {
@@ -58,7 +60,7 @@ function getFoodInformation(Ean) {
         }
     }
     console.log(opts.hostname + opts.path);
-    var req = https.request(opts, function (res) {
+    var req = http.request(opts, function (res) {
 
         res.on('data', function (d) {
             // console.log(d);
