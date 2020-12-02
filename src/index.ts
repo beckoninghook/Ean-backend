@@ -14,35 +14,25 @@ app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
 
-app.get("/product", (req, res) => {
-    console.log(req.query.barcode);
-    getEanProduct(req.query.barcode);
-    //getFoodInformation(req.query.ean);
+app.get("/getProduct", async (req, res, next) => {
+    getEanProduct(req.query.ean);
     res.json(data);
 });
 
 //This function will send out a http request to the api with the EAN code that's provided through the url
 function getEanProduct(Ean) {
     var opts = {
-        hostname: 'api.upcitemdb.com',
-        path: '/prod/trial/lookup',
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json"
-        }
+        hostname: 'barcode.monster',
+        path: '/api/' + Ean,
+        method: 'GET',
     }
-    var req = http.request(opts, function (res) {
-        console.log('statusCode: ', res.statusCode);
-        console.log('headers: ', res.headers);
+    var req = https.request(opts, function (res) {
         res.on('data', function (d) {
-            console.log('BODY: ' + d);
-            data = JSON.parse(d).items[0];
+            var textChunk = d.toString('utf8');
+            data = JSON.parse(textChunk);
+
         })
     })
-    req.on('error', function (e) {
-        console.log('problem with request: ' + e.message);
-    })
-    req.write('{ "upc": "4002293401102" }')
     req.end()
 }
 
