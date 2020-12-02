@@ -15,3 +15,9 @@ export async function searchBarcode(barcode: number, datasources: DataSource[]):
     }
     return results;
 }
+
+
+
+
+
+
