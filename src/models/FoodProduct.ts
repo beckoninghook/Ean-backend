@@ -13,5 +13,4 @@ export class FoodProduct {
         this.carbohydrates = carbohydrates;
         this.label = label;
     }
-
 }
