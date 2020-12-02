@@ -26,7 +26,7 @@ function getEanProduct(Ean) {
         path: '/api/' + Ean,
         method: 'GET',
     }
-    var req = https.request(opts, function (res) {
+    var req = http.request(opts, function (res) {
         res.on('data', function (d) {
             var textChunk = d.toString('utf8');
             data = JSON.parse(textChunk);
