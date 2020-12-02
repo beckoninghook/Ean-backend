@@ -1,5 +1,5 @@
 const express = require("express");
-const https = require("http");
+var https = require('follow-redirects').http;
 const app = express();
 const port = 8080; // default port to listen
 let data: any;
@@ -8,35 +8,25 @@ app.listen(3000, () => {
     console.log("Server running on port 3000");
 });
 
-app.get("/getProduct", (req, res, next) => {
-    console.log(req.query.ean);
+app.get("/getProduct", async (req, res, next) => {
     getEanProduct(req.query.ean);
-    //getFoodInformation(req.query.ean);
     res.json(data);
 });
 
 //This function will send out a http request to the api with the EAN code thats provided through the url
 function getEanProduct(Ean) {
     var opts = {
-        hostname: 'api.upcitemdb.com',
-        path: '/prod/trial/lookup',
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json"
-        }
+        hostname: 'barcode.monster',
+        path: '/api/' + Ean,
+        method: 'GET',
     }
     var req = https.request(opts, function (res) {
-        console.log('statusCode: ', res.statusCode);
-        console.log('headers: ', res.headers);
         res.on('data', function (d) {
-            console.log('BODY: ' + d);
-            data = JSON.parse(d).items[0];
+            var textChunk = d.toString('utf8');
+            data = JSON.parse(textChunk);
+
         })
     })
-    req.on('error', function (e) {
-        console.log('problem with request: ' + e.message);
-    })
-    req.write('{ "upc": "4002293401102" }')
     req.end()
 }
 
