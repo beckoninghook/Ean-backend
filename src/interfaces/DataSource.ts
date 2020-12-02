@@ -8,6 +8,7 @@ import {FoodProduct} from "../models/FoodProduct";
  */
 //TODO: Add methods as described on Trello.
 export interface DataSource {
+    dataSourceIndicator: string;
     searchBarcode: (barcode: number) => Promise<FoodProduct[]>;
     convertData: (data: any) => FoodProduct[]
 }

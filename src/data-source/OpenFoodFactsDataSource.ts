@@ -3,6 +3,7 @@ import {FoodProduct} from "../models/FoodProduct";
 import axios from 'axios';
 
 export class OpenFoodFactsDataSource implements DataSource {
+    dataSourceIndicator: string = "Open Food Facts"
     url: String = 'https://world.openfoodfacts.org/api/v0/product/'
 
     constructor() {
@@ -10,6 +11,9 @@ export class OpenFoodFactsDataSource implements DataSource {
 
     async searchBarcode(barcode: number): Promise<FoodProduct[]> {
         const data = await axios.get(this.url + barcode.toString())
+        if (data.data.status == 0) {
+            return [];
+        }
         const unconvertedProduct = data.data.product
         return this.convertData(unconvertedProduct);
     }

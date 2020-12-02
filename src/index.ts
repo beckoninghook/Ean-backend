@@ -4,10 +4,6 @@ import Config from "./config";
 import bodyParser from "body-parser";
 import foodProductRoutes from "./rest/routes/FoodProductRoutes"
 
-//TODO: Clean up, separate things out into files and make it use the method exported from FoodProductController.ts
-// Make this file use FoodProductController.ts and config.ts for querying the barcode.
-//TODO: Create a config file/use some config library?
-
 const app = express();
 const port = Config.DEFAULT_PORT; // default port to listen
 
