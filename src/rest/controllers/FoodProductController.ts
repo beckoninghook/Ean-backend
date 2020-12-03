@@ -1,7 +1,7 @@
 import {FoodProduct} from "../../models/FoodProduct";
 import {DataSource} from "../../interfaces/DataSource";
 import Config from "../../config";
-import { performance } from "perf_hooks"
+import {performance} from "perf_hooks"
 
 /*
     Main function used by the GET REST endpoint to query a barcode.
@@ -35,8 +35,10 @@ async function searchBarcode(barcode: number, datasources: DataSource[]): Promis
     const timer = performance.now()
     const results: FoodProduct[] = []
     for (let d of datasources) {
+        const dataSourceTimer = performance.now()
         let dataSourceResults = await d.searchBarcode(barcode)
-        console.log(`Received ${dataSourceResults.length} results from data source: ${d.dataSourceIndicator}`)
+        const dataSourceTimerEnd = performance.now()
+        console.log(`Received ${dataSourceResults.length} results from data source: ${d.dataSourceIndicator} in ${Math.round(((dataSourceTimerEnd - dataSourceTimer) + Number.EPSILON) * 100) / 100} milliseconds.`)
         if (dataSourceResults.length != 0) {
             for (let result of dataSourceResults) {
                 results.push(result)
@@ -45,7 +47,7 @@ async function searchBarcode(barcode: number, datasources: DataSource[]): Promis
     }
     const timerEnd = performance.now()
     console.log(`Search took ${Math.round(((timerEnd - timer) +
-        Number.EPSILON) * 100) / 100} milliseconds.`)
+        Number.EPSILON) * 100) / 100} milliseconds in total.`)
     return results;
 }
 
