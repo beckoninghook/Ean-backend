@@ -6,11 +6,18 @@ import {OpenFoodFactsDataSource} from "./data-source/OpenFoodFactsDataSource";
 * */
 
 export default class Config {
+    private static datasources: DataSource[]
     static DEFAULT_PORT: number = 8080;
 
     static useAllDataSources(): DataSource[] {
-        return new Array(
-            new OpenFoodFactsDataSource(),
-        )
+        if (this.datasources != null) {
+            return this.datasources
+        } else {
+            this.datasources = new Array(
+                new OpenFoodFactsDataSource(),
+            )
+            console.log("Data sources have been initialized.")
+            return this.datasources
+        }
     }
 }

@@ -5,8 +5,8 @@ import {performance} from "perf_hooks"
 
 /*
     Main function used by the GET REST endpoint to query a barcode.
-    Import this function and use it when the server receives a GET request for querying a barcode.
-    Use the configuration to get the list of datasources that have been implemented.
+    The function calls searchBarcode() with the barcode in the query parameters and the
+    list of datasources in the config.
  */
 export const getBarcode = async (req, res) => {
     console.log("\nFoodProduct API: REQUEST START")
@@ -14,7 +14,7 @@ export const getBarcode = async (req, res) => {
     console.log(`Received a GET request on /api/foodproduct with barcode number: ${barcode}`)
     if (req.query.barcode == null) {
         const errorMessageNoBarcode = "Please provide a proper barcode in the request.";
-        console.log("Received invalid barcode. Responding with message: " + errorMessageNoBarcode)
+        console.log(`Received invalid barcode. Responding with message: ${errorMessageNoBarcode}`)
         console.log("FoodProduct API: REQUEST END")
         return res.status(400).send(errorMessageNoBarcode);
     }
