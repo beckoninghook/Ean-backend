@@ -1,6 +1,7 @@
 import {FoodProduct} from "../../models/FoodProduct";
 import {DataSource} from "../../interfaces/DataSource";
 import Config from "../../config";
+import { performance } from "perf_hooks"
 
 /*
     Main function used by the GET REST endpoint to query a barcode.
@@ -8,7 +9,7 @@ import Config from "../../config";
     Use the configuration to get the list of datasources that have been implemented.
  */
 export const getBarcode = async (req, res) => {
-    console.log("FoodProduct API: REQUEST START")
+    console.log("\nFoodProduct API: REQUEST START")
     const barcode = req.query.barcode;
     console.log(`Received a GET request on /api/foodproduct with barcode number: ${barcode}`)
     if (req.query.barcode == null) {
@@ -25,12 +26,13 @@ export const getBarcode = async (req, res) => {
     } else {
         console.log("Received no results from data sources.")
         console.log("FoodProduct API: REQUEST END")
-        return res.status(404).send(`No results for barcode ${barcode}`)
+        return res.status(404).send(`No results for barcode ${barcode}.`)
     }
 }
 
 
 async function searchBarcode(barcode: number, datasources: DataSource[]): Promise<FoodProduct[]> {
+    const timer = performance.now()
     const results: FoodProduct[] = []
     for (let d of datasources) {
         let dataSourceResults = await d.searchBarcode(barcode)
@@ -41,6 +43,9 @@ async function searchBarcode(barcode: number, datasources: DataSource[]): Promis
             }
         }
     }
+    const timerEnd = performance.now()
+    console.log(`Search took ${Math.round(((timerEnd - timer) +
+        Number.EPSILON) * 100) / 100} milliseconds.`)
     return results;
 }
 
