@@ -18,11 +18,20 @@ export class OpenFoodFactsDataSource implements DataSource {
         return this.convertData(unconvertedProduct);
     }
 
-    //TODO: Change this when FoodProduct model grows
     convertData(data: any): FoodProduct[] {
-        return Array(new FoodProduct(data.id,
-            data.nutriments['energy-kcal'],
-            data.nutriments.carbohydrates,
-            data.labels));
+        console.log(data.nutriments.proteins_100g)
+        const foodProduct = new FoodProduct(
+            data.product_name,
+            data.nutriments['energy-kcal_100g'],
+            data.nutriments.carbohydrates_100g,
+            data.nutriments.fat_100g,
+            data.nutriments.proteins_100g,
+            data.pnns_groups_2,
+            data.product_quantity
+        )
+        console.log(foodProduct)
+        return Array(
+            foodProduct
+            );
     }
 }

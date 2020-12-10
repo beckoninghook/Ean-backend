@@ -9,10 +9,15 @@ export default class Config {
     private static datasources: DataSource[]
     static DEFAULT_PORT: number = 8080;
 
+    /**
+     * Returns a list of all data sources.
+     * Returns the initialized data sources or otherwise initializes them and returns them afterwards.
+     */
     static useAllDataSources(): DataSource[] {
         if (this.datasources != null) {
             return this.datasources
         } else {
+            //Add used data sources here
             this.datasources = new Array(
                 new OpenFoodFactsDataSource(),
             )

@@ -1,16 +1,57 @@
-/*
-    Model for the FoodProduct that will be passed on to the front-end through the GET REST endpoint.
+/**
+ * Model for FoodProduct that will be returned to the frontend.
+ * This model fits the expected response.
  */
 export class FoodProduct {
-    id: Number
-    calories: Number
-    carbohydrates: Number
-    label: String
+    /**
+     * Label (name) of the food product.
+     */
+    label: string
 
-    constructor(id: Number, calories: Number, carbohydrates: Number, label: String) {
-        this.id = id;
+    /**
+     * Energy in kcal per 100g
+     */
+    calories: number
+
+    /**
+     * Carbohydrates per 100g
+     */
+    carbohydrates: number
+
+    /**
+     * Fat per 100g
+     */
+    fat: number
+
+    /**
+     * Protein per 100g
+     */
+    protein: number
+
+    /**
+     * Type of product. For example "meats"
+     */
+    tags: string
+
+    /**
+     * Weight in grams.
+     */
+    weight: number
+
+
+    constructor(label: string,
+                calories: number,
+                carbohydrates: number,
+                fat: number,
+                protein: number,
+                tags: string,
+                weight: number) {
+        this.label = label;
         this.calories = calories;
         this.carbohydrates = carbohydrates;
-        this.label = label;
+        this.fat = fat;
+        this.protein = protein;
+        this.tags = tags;
+        this.weight = weight;
     }
 }
