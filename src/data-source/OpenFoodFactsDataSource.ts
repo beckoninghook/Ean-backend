@@ -5,6 +5,7 @@ import axios from 'axios';
 export class OpenFoodFactsDataSource implements DataSource {
     dataSourceIndicator: string = "Open Food Facts"
     url: String = 'https://world.openfoodfacts.org/api/v0/product/'
+    apiKey: String = ''
 
     constructor() {
     }
