@@ -1,5 +1,6 @@
 import {DataSource} from "./interfaces/DataSource";
 import {OpenFoodFactsDataSource} from "./data-source/OpenFoodFactsDataSource";
+import {FoodRepoDataSource} from "./data-source/FoodRepoDataSource";
 
 /*
 * Add important configuration variables and functions here as they are needed.
@@ -19,7 +20,7 @@ export default class Config {
         } else {
             //Add used data sources here
             this.datasources = new Array(
-                new OpenFoodFactsDataSource(),
+                new FoodRepoDataSource(),
             )
             console.log("Data sources have been initialized.")
             return this.datasources
