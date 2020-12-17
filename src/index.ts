@@ -4,6 +4,7 @@ import * as http from "http"
 import Config from "./config";
 import bodyParser from "body-parser";
 import foodProductRoutes from "./rest/routes/FoodProductRoutes"
+import { database } from "./database/database";
 
 const serverStartTimer = performance.now()
 const app = express();
@@ -20,9 +21,19 @@ app.use((req, res, next) => {
 
 app.use('/api', foodProductRoutes)
 
-app.listen(port, () => {
-    const serverStartedTimer = performance.now()
-    console.log(`Launched server on port ${port} in ${Math.round(((serverStartedTimer - serverStartTimer) + 
-        Number.EPSILON) * 100) / 100} milliseconds.`)
-});
+database
+    .sync()
+    .then(result => {
+        console.log(result)
+        app.listen(port, () => {
+            const serverStartedTimer = performance.now()
+            console.log(`Launched server on port ${port} in ${Math.round(((serverStartedTimer - serverStartTimer) +
+                Number.EPSILON) * 100) / 100} milliseconds.`)
+        });
+    })
+    .catch(error => {
+        console.log(error)
+    })
+
+
 
