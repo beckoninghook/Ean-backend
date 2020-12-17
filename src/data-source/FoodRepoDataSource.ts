@@ -1,43 +1,56 @@
 import {DataSource} from "../interfaces/DataSource";
 import {FoodProduct} from "../models/FoodProduct";
 // @ts-ignore
-import axios from 'axios';
-import {request} from "express";
 
 
 export class FoodRepoDataSource implements DataSource{
     
     dataSourceIndicator: string = "FoodRepo"
-    url: String = 'https://www.foodrepo.org/api/v3/products/'
-    apiKey: '052da85a97d58565de47584f7e516dcc'
-
-    options = {
-        url: 'https://www.foodrepo.org/api/v3/products/',
-        headers: {'Authorization': 'Token token=052da85a97d58565de47584f7e516dcc'}
-    };
-
+    url: String = 'https://www.foodrepo.org/api/v3/products?barcode='
 
     constructor() {
     }
 
+    delay() {
+        // `delay` returns a promise
+        return new Promise(function(resolve, reject) {
+            // Only `delay` is able to resolve or reject the promise
+            setTimeout(function() {
+                resolve(42); // After 3 seconds, resolve the promise with value 42
+            }, 3000);
+        });
+    }
+
 
     async searchBarcode(barcode: number): Promise<FoodProduct[]> {
-        const data = await axios.get(this.options +'2030')
-        if (data.data.status == 0) {
-            return [];
+        try {
+            const options = {
+                url: 'https://www.foodrepo.org/api/v3/products?barcodes=' + barcode.toString(),
+                headers: {'Authorization': 'Token token=d558bf263e21e34ad76c95c0f006d0de'}
+            };
+            const request = require('request');
+            let info = request.get(options, function(error, response, body){
+                     info = JSON.parse(body);
+                 })
+            await this.delay();
+            const unconverted = info.data;
+            console.log(unconverted);
+            return await this.convertData(unconverted);
+        }catch (error){
+            return null;
         }
-        return this.convertData(data.data.product);
     }
+
 
     convertData(data: any): FoodProduct[] {
         const foodProduct = new FoodProduct(
-            data.product_name,
-            data.calories,
-            data.carbohydrates,
-            data.fat,
-            data.protein,
-            data.tag,
-            data.weight
+            data[0].name_translations.en,
+            data[0].nutrients.energy_kcal.per_hundred,
+            data[0].nutrients.carbohydrates.per_hundred,
+            data[0].nutrients.fat.per_hundred,
+            data[0].nutrients.protein.per_hundred,
+            data[0].country,
+            data[0].quantity
         )
         console.log(foodProduct)
         return Array(
