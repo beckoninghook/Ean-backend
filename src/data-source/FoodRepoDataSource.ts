@@ -49,7 +49,7 @@ export class FoodRepoDataSource implements DataSource{
             data[0].nutrients.carbohydrates.per_hundred,
             data[0].nutrients.fat.per_hundred,
             data[0].nutrients.protein.per_hundred,
-            data[0].country,
+            data[0].display_name_translations.en,
             data[0].quantity
         )
         console.log(foodProduct)
