@@ -10,7 +10,10 @@
     "express": "^4.17.1",
     "follow-redirects": "^1.13.0",
     "install": "^0.13.0",
+    "mysql2": "^2.2.5",
     "npm": "^6.14.9",
+    "sequelize-typescript": "^0.6.11",
+    "sequelize": "^5.15.1",
     "typescript": "^4.1.2",
     "unirest": "^0.6.0"
   },

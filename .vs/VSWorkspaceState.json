@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\data-source",
+    "\\src\\interfaces",
+    "\\src\\models",
+    "\\src\\rest",
+    "\\src\\rest\\controllers",
+    "\\src\\rest\\routes"
+  ],
+  "SelectedNode": "\\src\\data-source\\OpenFoodFactsDataSource.ts",
+  "PreviewInSolutionExplorer": false
+}
