@@ -5,7 +5,6 @@ import { Table, Column, Model } from 'sequelize-typescript';
     timestamps: false,
     tableName: "foodproduct",
     modelName: "foodproduct",
-
 })
 export class SequelizeFoodProduct extends Model<SequelizeFoodProduct> {
     @Column

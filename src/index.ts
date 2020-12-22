@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 app.use('/api', foodProductRoutes)
 
 database
-    .sync()
+    .sync( {alter: true })
     .then(result => {
         console.log(result)
         app.listen(port, () => {

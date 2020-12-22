@@ -5,5 +5,5 @@ export const database = new Sequelize({
     dialect: 'mysql',
     username: 'root',
     password: 'password',
-    models: ["./database/db-models"]
+    models: [__dirname + "/db-models"]
 });
