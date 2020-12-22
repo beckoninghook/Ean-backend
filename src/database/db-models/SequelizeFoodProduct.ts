@@ -1,4 +1,6 @@
 import { Table, Column, Model } from 'sequelize-typescript';
+import {FoodProduct} from "../../models/FoodProduct";
+import {DataType, DataTypes} from "sequelize";
 
 
 @Table({
@@ -8,21 +10,21 @@ import { Table, Column, Model } from 'sequelize-typescript';
 })
 export class SequelizeFoodProduct extends Model<SequelizeFoodProduct> {
     @Column
-    eanBarcode: number
+    eanBarcode: string
 
     @Column
     label: string
 
-    @Column
+    @Column({type: DataTypes.FLOAT})
     calories: number
 
-    @Column
+    @Column({type: DataTypes.FLOAT})
     carbohydrates: number
 
-    @Column
+    @Column({type: DataTypes.FLOAT})
     fat: number
 
-    @Column
+    @Column({type: DataTypes.FLOAT})
     protein: number
 
     @Column
@@ -30,7 +32,6 @@ export class SequelizeFoodProduct extends Model<SequelizeFoodProduct> {
 
     @Column
     weight: number
-
 
 }
 

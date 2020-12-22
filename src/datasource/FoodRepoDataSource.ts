@@ -6,6 +6,7 @@ export class FoodRepoDataSource implements DataSource {
 
     async searchBarcode(barcode: number): Promise<FoodProduct[]> {
         const nepFoodProduct = {
+            eanNep : '45645654',
             labelNep: "Geisha suklaamousseleivos",
             caloriesNep: 437,
             carbohydratesNep: 35,
@@ -19,6 +20,7 @@ export class FoodRepoDataSource implements DataSource {
 
     convertData(data: any): FoodProduct[] {
         const foodProduct = new FoodProduct(
+            data.eanNep,
             data.labelNep,
             data.caloriesNep,
             data.carbohydratesNep,
