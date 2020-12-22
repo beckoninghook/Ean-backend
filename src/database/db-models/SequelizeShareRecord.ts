@@ -1,4 +1,5 @@
-import {Table, Column, Model, CreatedAt} from "sequelize-typescript"
+import {Table, Column, Model, CreatedAt, BelongsTo} from "sequelize-typescript"
+import {SequelizeUser} from "./SequelizeUser";
 
 @Table({
     tableName: "sharerecord",
@@ -7,4 +8,7 @@ import {Table, Column, Model, CreatedAt} from "sequelize-typescript"
 export class SequelizeShareRecord extends Model<SequelizeShareRecord> {
     @CreatedAt
     timestamp: Date;
+
+    @BelongsTo(() => SequelizeUser, 'userId')
+    user: SequelizeUser
 }

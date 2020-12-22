@@ -8,25 +8,41 @@ import {performance} from "perf_hooks"
     The function calls searchBarcode() with the barcode in the query parameters and the
     list of datasources in the config.
  */
-export const getBarcode = async (req, res) => {
+export const getBarcode = async (req, res, next) => {
     console.log("\nFoodProduct API: REQUEST START")
-    const barcode = req.query.barcode;
-    console.log(`Received a GET request on /api/foodproduct with barcode number: ${barcode}`)
-    if (req.query.barcode == null) {
-        const errorMessageNoBarcode = "Please provide a proper barcode in the request.";
-        console.log(`Received invalid barcode. Responding with message: ${errorMessageNoBarcode}`)
-        console.log("FoodProduct API: REQUEST END")
-        return res.status(400).send(errorMessageNoBarcode);
-    }
-    const data = await searchBarcode(req.query.barcode, Config.useAllDataSources())
-    if (data.length != 0) {
-        console.log(`Successfully received ${data.length} results from data sources.`)
-        console.log("FoodProduct API: REQUEST END")
-        return res.status(200).send(data)
-    } else {
-        console.log("Received no results from data sources.")
-        console.log("FoodProduct API: REQUEST END")
-        return res.status(404).send(`No results for barcode ${barcode}.`)
+    try {
+        const barcode = req.query.barcode;
+        console.log(`Received a GET request on /api/foodproduct with barcode number: ${barcode}`)
+        if (!req.query.barcode) {
+            const errorThrown = new Error('Please provide a proper barcode in the request.')
+            console.log("No barcode provided in request.")
+            console.log("FoodProduct API: REQUEST END")
+            const error = {
+                errorThrown,
+                statusCode: 404
+            }
+            next(error)
+        }
+        const data = await searchBarcode(req.query.barcode, Config.useAllDataSources())
+        if (data.length != 0) {
+            console.log(`Successfully received ${data.length} results from data sources.`)
+            console.log("FoodProduct API: REQUEST END")
+            return res.status(200).send(data)
+        } else {
+            const errorThrown = new Error('Found no results for barcode: ' + barcode)
+            console.log("Received no results from data sources.")
+            console.log("FoodProduct API: REQUEST END")
+            const error = {
+                errorThrown,
+                statusCode: 404,
+            }
+            next(error)
+        }
+    } catch (errorThrown) {
+        const error = {
+            errorThrown,
+        }
+       next(error)
     }
 }
 

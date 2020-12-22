@@ -8,6 +8,8 @@ import Config from "./config";
 import foodProductRoutes from "./rest/routes/FoodProductRoutes"
 import shareRoutes from "./rest/routes/ShareRoutes"
 
+import errorResponse from "./middleware/ErrorResponse"
+
 const serverStartTimer = performance.now()
 const app = express();
 const port = Config.DEFAULT_PORT; // default port to listen
@@ -23,6 +25,8 @@ app.use((req, res, next) => {
 
 app.use('/api/v1', foodProductRoutes)
 app.use('/api/v1', shareRoutes)
+
+app.use(errorResponse)
 
 database
     .sync( {alter: true })

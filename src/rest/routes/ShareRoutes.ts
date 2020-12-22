@@ -1,7 +1,7 @@
 import * as express from "express"
 import * as controller from "../controllers/ShareController"
 
-const router = express.router()
+const router = express.Router()
 
 router.post('/share', controller.saveShareRecord);
 
