@@ -2,7 +2,7 @@ import {DataSource} from "../interfaces/DataSource";
 import {FoodProduct} from "../models/FoodProduct";
 import axios from 'axios';
 import {SequelizeFoodProduct} from "../database/db-models/SequelizeFoodProduct";
-import {getBarcode} from "../rest/controllers/FoodProductController";
+import {where} from "sequelize";
 
 export class OpenFoodFactsDataSource implements DataSource {
     dataSourceIndicator: string = "Open Food Facts"
@@ -21,8 +21,7 @@ export class OpenFoodFactsDataSource implements DataSource {
         return this.convertData(unconvertedProduct);
     }
 
-    convertData(data: any): FoodProduct[] {
-        console.log(data)
+    async convertData(data: any): Promise<FoodProduct[]> {
         const foodProduct = new FoodProduct(
             data._id,
             data.product_name,
@@ -34,9 +33,12 @@ export class OpenFoodFactsDataSource implements DataSource {
             data.product_quantity
         )
         //writing it to database. Maybe there is a better place to this.
+        //foodData.save();
         const foodData = new SequelizeFoodProduct(foodProduct);
-        foodData.save()
-        console.log(foodProduct)
+        let food = await SequelizeFoodProduct.findOne({where:{eanBarcode:foodProduct.eanBarcode}})
+        if(!food){
+            foodData.save();
+        }
         return Array(
             foodProduct
         );

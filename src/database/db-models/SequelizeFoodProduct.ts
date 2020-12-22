@@ -1,6 +1,7 @@
-import { Table, Column, Model } from 'sequelize-typescript';
+import {Table, Column, Model, PrimaryKey, Unique, addAttribute} from 'sequelize-typescript';
 import {FoodProduct} from "../../models/FoodProduct";
 import {DataType, DataTypes} from "sequelize";
+
 
 
 @Table({
@@ -9,6 +10,8 @@ import {DataType, DataTypes} from "sequelize";
     modelName: "foodproduct",
 })
 export class SequelizeFoodProduct extends Model<SequelizeFoodProduct> {
+
+    @Unique
     @Column
     eanBarcode: string
 

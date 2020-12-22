@@ -20,7 +20,7 @@ export default class Config {
         } else {
             //Add used data sources here
             this.datasources = [new OpenFoodFactsDataSource(),
-                new FoodRepoDataSource()]
+                ]
             console.log("Data sources have been initialized.")
             return this.datasources
         }
