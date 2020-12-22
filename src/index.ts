@@ -1,10 +1,12 @@
 import express from "express"
 import { performance } from "perf_hooks"
-import * as http from "http"
-import Config from "./config";
 import bodyParser from "body-parser";
-import foodProductRoutes from "./rest/routes/FoodProductRoutes"
+
 import { database } from "./database/database";
+import Config from "./config";
+
+import foodProductRoutes from "./rest/routes/FoodProductRoutes"
+import shareRoutes from "./rest/routes/ShareRoutes"
 
 const serverStartTimer = performance.now()
 const app = express();
@@ -19,7 +21,8 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use('/api', foodProductRoutes)
+app.use('/api/v1', foodProductRoutes)
+app.use('/api/v1', shareRoutes)
 
 database
     .sync( {alter: true })
