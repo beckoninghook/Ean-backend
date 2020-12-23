@@ -1,8 +1,8 @@
-import {FoodProduct} from "../../models/FoodProduct";
-import {DataSource} from "../../interfaces/DataSource";
+import { FoodProduct } from "../../models/FoodProduct";
+import { DataSource } from "../../interfaces/DataSource";
 import Config from "../../config";
-import {performance} from "perf_hooks"
-
+import { performance } from "perf_hooks"
+import { SequelizeFoodProduct } from "../../database/db-models/SequelizeFoodProduct";
 /**
  *  Main function used by the GET endpoint on /foodproduct to query a barcode.
     It calls searchBarcode with the barcode in the query parameters and the
@@ -46,7 +46,7 @@ export const getBarcode = async (req, res, next) => {
         const error = {
             errorThrown,
         }
-       next(error)
+        next(error)
     }
 }
 
@@ -63,11 +63,18 @@ async function searchBarcode(barcode: number, datasources: DataSource[]): Promis
     for (let d of datasources) {
         const dataSourceTimer = performance.now()
         let dataSourceResults = await d.searchBarcode(barcode)
-        console.log(dataSourceResults)
+        console.log("recieved data source results : ", dataSourceResults)
         const dataSourceTimerEnd = performance.now()
         console.log(`Received ${dataSourceResults.length} results from data source: ${d.dataSourceIndicator} in ${Math.round(((dataSourceTimerEnd - dataSourceTimer) + Number.EPSILON) * 100) / 100} milliseconds.`)
         if (dataSourceResults.length != 0) {
             for (let result of dataSourceResults) {
+                const foodData = new SequelizeFoodProduct(result);
+                //Before saving to the database do a simple check to see if it doesnt already exists
+                let food = await SequelizeFoodProduct.findOne({ where: { eanBarcode: result.eanBarcode } })
+                if (!food) {
+                    console.log("Saving product to database");
+                    foodData.save();
+                }
                 results.push(result)
             }
         }
