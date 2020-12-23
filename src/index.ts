@@ -1,4 +1,4 @@
-import express from "express"
+import express, {Express} from "express"
 import { performance } from "perf_hooks"
 import bodyParser from "body-parser";
 
@@ -10,9 +10,9 @@ import shareRoutes from "./rest/routes/ShareRoutes"
 
 import errorResponse from "./middleware/ErrorResponse"
 
-const serverStartTimer = performance.now()
-const app = express();
-const port = Config.DEFAULT_PORT; // default port to listen
+const serverStartTimer: number = performance.now()
+const app: Express = express();
+const port: number = Config.DEFAULT_PORT; // default port to listen
 
 app.use(bodyParser.json());
 

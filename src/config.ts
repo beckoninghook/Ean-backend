@@ -1,10 +1,9 @@
 import {DataSource} from "./interfaces/DataSource";
 import {OpenFoodFactsDataSource} from "./datasource/OpenFoodFactsDataSource";
 
-/*
+/**
 * Add important configuration variables and functions here as they are needed.
 * */
-
 export default class Config {
     private static datasources: DataSource[]
     static DEFAULT_PORT: number = 8080;
@@ -19,7 +18,8 @@ export default class Config {
         } else {
             //Add used data sources here
             this.datasources = [
-                new OpenFoodFactsDataSource(),]
+                new OpenFoodFactsDataSource(),
+            ]
             console.log("Data sources have been initialized.")
             return this.datasources
         }

@@ -3,10 +3,13 @@ import {DataSource} from "../../interfaces/DataSource";
 import Config from "../../config";
 import {performance} from "perf_hooks"
 
-/*
-    Main function used by the GET REST endpoint to query a barcode.
-    The function calls searchBarcode() with the barcode in the query parameters and the
-    list of datasources in the config.
+/**
+ *  Main function used by the GET endpoint on /foodproduct to query a barcode.
+    It calls searchBarcode with the barcode in the query parameters and the
+    list of datasources in the configuration.
+ * @param req
+ * @param res
+ * @param next
  */
 export const getBarcode = async (req, res, next) => {
     console.log("\nFoodProduct API: REQUEST START")
@@ -23,6 +26,7 @@ export const getBarcode = async (req, res, next) => {
             }
             next(error)
         }
+        //Use the barcode in the request query parameters and all data sources provided in the configuration to search.
         const data = await searchBarcode(req.query.barcode, Config.useAllDataSources())
         if (data.length != 0) {
             console.log(`Successfully received ${data.length} results from data sources.`)
@@ -46,7 +50,13 @@ export const getBarcode = async (req, res, next) => {
     }
 }
 
-
+/**
+ * This function takes a barcode and a list of objects implementing the DataSource interface.
+ * Then it performs the interface's searchBarcode function on each DataSource in the list and adds
+ * its value to an array. Finally, the results are returned with each FoodProduct found by the Datasources.
+ * @param barcode
+ * @param datasources
+ */
 async function searchBarcode(barcode: number, datasources: DataSource[]): Promise<FoodProduct[]> {
     const timer = performance.now()
     const results: FoodProduct[] = []
