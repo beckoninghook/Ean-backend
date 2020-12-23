@@ -28,5 +28,5 @@ export interface DataSource {
      * FoodProduct model for uniformity.
      * @param data
      */
-    convertData: (data: any) => FoodProduct[]
+    convertData: (data: any) => Promise<FoodProduct[]>;
 }

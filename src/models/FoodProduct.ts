@@ -4,6 +4,11 @@
  */
 export class FoodProduct {
     /**
+     * Barcode of the food product
+     */
+    eanBarcode: string;
+
+    /**
      * Label (name) of the food product.
      */
     label: string
@@ -39,13 +44,15 @@ export class FoodProduct {
     weight: number
 
 
-    constructor(label: string,
+    constructor(eanBarcode: string,
+                label: string,
                 calories: number,
                 carbohydrates: number,
                 fat: number,
                 protein: number,
                 tags: string,
                 weight: number) {
+        this.eanBarcode = eanBarcode;
         this.label = label;
         this.calories = calories;
         this.carbohydrates = carbohydrates;
