@@ -1,6 +1,6 @@
 import {DataSource} from "./interfaces/DataSource";
-import {OpenFoodFactsDataSource} from "./data-source/OpenFoodFactsDataSource";
-import {FoodRepoDataSource} from "./data-source/FoodRepoDataSource";
+import {OpenFoodFactsDataSource} from "./datasource/OpenFoodFactsDataSource";
+import {FoodRepoDataSource} from "./datasource/FoodRepoDataSource";
 
 /**
 * Add important configuration variables and functions here as they are needed.

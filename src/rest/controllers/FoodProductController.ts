@@ -63,6 +63,7 @@ async function searchBarcode(barcode: number, datasources: DataSource[]): Promis
     for (let d of datasources) {
         const dataSourceTimer = performance.now()
         let dataSourceResults = await d.searchBarcode(barcode)
+        console.log(dataSourceResults)
         const dataSourceTimerEnd = performance.now()
         console.log(`Received ${dataSourceResults.length} results from data source: ${d.dataSourceIndicator} in ${Math.round(((dataSourceTimerEnd - dataSourceTimer) + Number.EPSILON) * 100) / 100} milliseconds.`)
         if (dataSourceResults.length != 0) {

@@ -17,7 +17,7 @@ export const saveShareRecord = async (req, res, next) => {
         if (!userData.id || !userData.email) {
             console.log("No user information attached to the share.")
             console.log("Share API: REQUEST END")
-            const errorThrown = new Error("Please attach user id and email to the password.")
+            const errorThrown = new Error("Please attach user id and email to the request.")
             const error = {
                 errorThrown,
                 statusCode: 400

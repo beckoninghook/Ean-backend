@@ -2,7 +2,6 @@ import {DataSource} from "../interfaces/DataSource";
 import {FoodProduct} from "../models/FoodProduct";
 import axios from 'axios';
 import {SequelizeFoodProduct} from "../database/db-models/SequelizeFoodProduct";
-import {where} from "sequelize";
 
 export class OpenFoodFactsDataSource implements DataSource {
     dataSourceIndicator: string = "Open Food Facts"
@@ -32,11 +31,11 @@ export class OpenFoodFactsDataSource implements DataSource {
             data.pnns_groups_2,
             data.product_quantity
         )
-        //writing it to database. Maybe there is a better place to this.
+        //Writing it to the database. Maybe there is a better place to this.
         //foodData.save();
         const foodData = new SequelizeFoodProduct(foodProduct);
-        let food = await SequelizeFoodProduct.findOne({where:{eanBarcode:foodProduct.eanBarcode}})
-        if(!food){
+        let food = await SequelizeFoodProduct.findOne({where: {eanBarcode: foodProduct.eanBarcode}})
+        if (!food) {
             foodData.save();
         }
         return Array(

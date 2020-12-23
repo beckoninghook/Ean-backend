@@ -1,49 +1,41 @@
 import {DataSource} from "../interfaces/DataSource";
 import {FoodProduct} from "../models/FoodProduct";
+import axios from 'axios';
+
 // @ts-ignore
 
 
-export class FoodRepoDataSource implements DataSource{
-    
+export class FoodRepoDataSource implements DataSource {
+
     dataSourceIndicator: string = "FoodRepo"
-    url: String = 'https://www.foodrepo.org/api/v3/products?barcode='
-
-    constructor() {
-    }
-
-    delay() {
-        // `delay` returns a promise
-        return new Promise(function(resolve, reject) {
-            // Only `delay` is able to resolve or reject the promise
-            setTimeout(function() {
-                resolve(42); // After 3 seconds, resolve the promise with value 42
-            }, 3000);
-        });
-    }
-
+    url: String = 'https://www.foodrepo.org/api/v3/products?barcodes='
 
     async searchBarcode(barcode: number): Promise<FoodProduct[]> {
         try {
-            const options = {
-                url: 'https://www.foodrepo.org/api/v3/products?barcodes=' + barcode.toString(),
-                headers: {'Authorization': 'Token token=d558bf263e21e34ad76c95c0f006d0de'}
-            };
-            const request = require('request');
-            let info = request.get(options, function(error, response, body){
-                     info = JSON.parse(body);
-                 })
-            await this.delay();
-            const unconverted = info.data;
-            console.log(unconverted);
+            let info = await axios.get(this.url + barcode.toString(), {
+                headers: {
+                    'Authorization': 'Token token=d558bf263e21e34ad76c95c0f006d0de'
+                }
+            })
+            if (!info.data.data) {
+                return []
+            }
+            const unconverted = info.data.data;
+            if (unconverted.length == 0) {
+                return []
+            }
             return await this.convertData(unconverted);
-        }catch (error){
-            return null;
+        } catch (error) {
+            console.log(error)
+            return []
         }
     }
 
 
-    convertData(data: any): FoodProduct[] {
+    convertData(data: any): Promise<FoodProduct[]> {
+        console.log(data)
         const foodProduct = new FoodProduct(
+            data[0].barcode,
             data[0].name_translations.en,
             data[0].nutrients.energy_kcal.per_hundred,
             data[0].nutrients.carbohydrates.per_hundred,
@@ -52,9 +44,8 @@ export class FoodRepoDataSource implements DataSource{
             data[0].display_name_translations.en,
             data[0].quantity
         )
-        console.log(foodProduct)
-        return Array(
+        return Promise.resolve(Array(
             foodProduct
-        );
+        ));
     }
 }
