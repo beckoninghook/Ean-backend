@@ -33,7 +33,6 @@ export class FoodRepoDataSource implements DataSource {
 
 
     convertData(data: any): Promise<FoodProduct[]> {
-        console.log(data[0])
         const foodProduct = new FoodProduct(
             data[0].barcode,
             data[0].name_translations.en,

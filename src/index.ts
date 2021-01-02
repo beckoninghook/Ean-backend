@@ -30,8 +30,7 @@ app.use(errorResponse)
 
 database
     .sync( {alter: true })
-    .then(result => {
-        console.log(result)
+    .then(() => {
         app.listen(port, () => {
             const serverStartedTimer = performance.now()
             console.log(`Launched server on port ${port} in ${Math.round(((serverStartedTimer - serverStartTimer) +

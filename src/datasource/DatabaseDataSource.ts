@@ -10,8 +10,11 @@ export class DatabaseDataSource implements DataSource {
 
     async searchBarcode(barcode: number): Promise<FoodProduct[]> {
         const data = await SequelizeFoodProduct.findOne({where:{eanBarcode: barcode.toString()}})
-
-        return [data]
+        if (data) {
+            return [data]
+        } else {
+            return []
+        }
     }
 
     convertData(data: any): Promise<FoodProduct[]> {

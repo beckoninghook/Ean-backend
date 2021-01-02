@@ -28,8 +28,8 @@ export const getBarcode = async (req, res, next) => {
         }
         //Use the barcode in the request query parameters and all data sources provided in the configuration to search.
         const data = await searchBarcode(req.query.barcode, Config.useAllDataSources())
-        if (data.length != 0) {
-            console.log(`Successfully received ${data.length} results from data sources.`)
+        if (data) {
+            console.log(`Successfully received a result from data sources.`)
             console.log("FoodProduct API: REQUEST END")
             return res.status(200).send(data)
         } else {
@@ -52,21 +52,20 @@ export const getBarcode = async (req, res, next) => {
 
 /**
  * This function takes a barcode and a list of objects implementing the DataSource interface.
- * Then it performs the interface's searchBarcode function on each DataSource in the list and adds
- * its value to an array. Finally, the results are returned with each FoodProduct found by the Datasources.
+ * Then it performs the interface's searchBarcode function on each DataSource in the list and if
+ * results are found, it will take the first result and return this. If no results are found it will return null.
  * @param barcode
  * @param datasources
  */
-async function searchBarcode(barcode: number, datasources: DataSource[]): Promise<FoodProduct[]> {
+async function searchBarcode(barcode: number, datasources: DataSource[]): Promise<FoodProduct | null> {
     const timer = performance.now()
-    const results: FoodProduct[] = []
+    let result: FoodProduct = null;
     for (let d of datasources) {
         const dataSourceTimer = performance.now()
         let dataSourceResults = await d.searchBarcode(barcode)
-        console.log("recieved data source results : ", dataSourceResults)
         const dataSourceTimerEnd = performance.now()
         console.log(`Received ${dataSourceResults.length} results from data source: ${d.dataSourceIndicator} in ${Math.round(((dataSourceTimerEnd - dataSourceTimer) + Number.EPSILON) * 100) / 100} milliseconds.`)
-        if (dataSourceResults.length != 0) {
+        if (dataSourceResults.length > 0) {
             for (let result of dataSourceResults) {
                 const foodData = new SequelizeFoodProduct(result);
                 //Before saving to the database do a simple check to see if it doesnt already exists
@@ -75,14 +74,17 @@ async function searchBarcode(barcode: number, datasources: DataSource[]): Promis
                     console.log("Saving product to database");
                     foodData.save();
                 }
-                results.push(result)
             }
+            result = dataSourceResults[0]
+        }
+        if (result != null) {
+            break;
         }
     }
     const timerEnd = performance.now()
     console.log(`Search took ${Math.round(((timerEnd - timer) +
         Number.EPSILON) * 100) / 100} milliseconds in total.`)
-    return results;
+    return result;
 }
 
 

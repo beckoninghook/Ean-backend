@@ -21,7 +21,6 @@ export class OpenFoodFactsDataSource implements DataSource {
     }
 
     async convertData(data: any): Promise<FoodProduct[]> {
-        console.log(data)
         const foodProduct = new FoodProduct(
             data._id,
             data.product_name,
