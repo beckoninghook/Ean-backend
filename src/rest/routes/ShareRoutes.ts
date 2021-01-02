@@ -5,4 +5,7 @@ const router = express.Router()
 
 router.post('/share', controller.saveShareRecord);
 
+router.get('/share', controller.countShareRecordsForUser)
+router.get('/share/:id', controller.countShareRecordsForUser)
+
 export default router;

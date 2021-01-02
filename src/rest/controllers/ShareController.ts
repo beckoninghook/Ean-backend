@@ -10,7 +10,7 @@ import {SequelizeShareRecord} from "../../database/db-models/SequelizeShareRecor
  * @param next
  */
 export const saveShareRecord = async (req, res, next) => {
-    console.log("\nShare API: REQUEST START")
+    console.log("\nShare API: POST REQUEST START")
     const userData = req.body;
     try {
         //Check if no data or unusable data was attached to the POST request.
@@ -59,7 +59,7 @@ export const saveShareRecord = async (req, res, next) => {
             const error = {
                 errorThrown,
             }
-            next(error)
+            return next(error)
         }
         console.log(shareRecord.dataValues)
         console.log("Recorded share for user with id: " + userData.id)
@@ -69,6 +69,47 @@ export const saveShareRecord = async (req, res, next) => {
         const error = {
             errorThrown,
         }
-        next(error)
+        return next(error)
     }
+}
+
+export const countShareRecordsForUser = async (req, res, next) => {
+    console.log("\nShare API: GET REQUEST START")
+    const userId = req.params.id
+    if (!userId) {
+        const errorThrown = new Error("No user specified. Please specify a User ID.");
+        const error = {
+            errorThrown,
+            statusCode: 400
+        }
+        return next(error)
+    }
+    const user: any = await SequelizeUser.findOne({where: {userId: userId}})
+    if (!user) {
+        const errorThrown = new Error("No user found with ID: " + userId)
+        const error = {
+            errorThrown,
+            statusCode: 404
+        }
+        return next(error)
+    }
+    const count = await SequelizeShareRecord.count({
+        where: {
+            userId: userId
+        }
+    })
+    console.log("Counted " + count + " shares for user with ID: " + userId)
+    if (!count || count == 0) {
+        const errorThrown = new Error("No share records found for user with ID: " + userId)
+        const error = {
+            errorThrown,
+            statusCode: 404
+        }
+        return next(error)
+    }
+    console.log("FoodProduct API: REQUEST END")
+    return res.status(200).json({
+        message: `Found ${count} shares for user with ID ${userId}`,
+        count: count
+    })
 }
