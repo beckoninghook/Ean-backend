@@ -43,6 +43,10 @@ export class FoodProduct {
      */
     weight: number
 
+    imageUrl: string
+
+
+
 
     constructor(eanBarcode: string,
                 label: string,
@@ -51,7 +55,8 @@ export class FoodProduct {
                 fat: number,
                 protein: number,
                 tags: string,
-                weight: number) {
+                weight: number,
+                imageUrl: string) {
         this.eanBarcode = eanBarcode;
         this.label = label;
         this.calories = calories;
@@ -60,5 +65,6 @@ export class FoodProduct {
         this.protein = protein;
         this.tags = tags;
         this.weight = weight;
+        this.imageUrl = imageUrl;
     }
 }

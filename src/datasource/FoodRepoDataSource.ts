@@ -33,7 +33,7 @@ export class FoodRepoDataSource implements DataSource {
 
 
     convertData(data: any): Promise<FoodProduct[]> {
-        console.log(data)
+        console.log(data[0])
         const foodProduct = new FoodProduct(
             data[0].barcode,
             data[0].name_translations.en,
@@ -42,7 +42,8 @@ export class FoodRepoDataSource implements DataSource {
             data[0].nutrients.fat.per_hundred,
             data[0].nutrients.protein.per_hundred,
             data[0].display_name_translations.en,
-            data[0].quantity
+            data[0].quantity,
+            data[0].images[0].medium
         )
         return Promise.resolve(Array(
             foodProduct
