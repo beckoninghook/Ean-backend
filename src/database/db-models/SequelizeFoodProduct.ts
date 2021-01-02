@@ -39,5 +39,8 @@ export class SequelizeFoodProduct extends Model<SequelizeFoodProduct> {
     @Column
     weight: number
 
+    @Column
+    imageUrl: string
+
 }
 
