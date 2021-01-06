@@ -63,7 +63,7 @@ export const saveShareRecord = async (req, res, next) => {
         console.log(shareRecord.dataValues)
         console.log("Recorded share for user with id: " + userData.id)
         console.log("FoodProduct API: REQUEST END")
-        return res.status(201).json({message: "Successfully recorded share."})
+        return res.status(201).json({statusCode: 201, message: "Successfully recorded share."})
     } catch (errorThrown) {
         const error = {
             errorThrown,
@@ -115,6 +115,7 @@ export const countShareRecordsForUser = async (req, res, next) => {
     }
     console.log("FoodProduct API: REQUEST END")
     return res.status(200).json({
+        statusCode: 200,
         message: `Found ${count} shares for user with ID ${userId}`,
         count: count
     })
