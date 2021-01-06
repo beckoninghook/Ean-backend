@@ -5,9 +5,8 @@ import {SequelizeShareRecord} from "../../database/db-models/SequelizeShareRecor
  * Controller function used when a POST request is made on the /share endpoint.
  * Takes a body with a user id and an email. It then finds an existing user or creates the user if it was not found.
  * Then it creates a share record with a timestamp and a foreign relation to the user.
- * @param req
- * @param res
- * @param next
+ * Technically this endpoint should be authenticated, but it's not possible yet because this is a proof-of-concept server
+ * with no access to EatMyRide's private key.
  */
 export const saveShareRecord = async (req, res, next) => {
     console.log("\nShare API: POST REQUEST START")
@@ -73,6 +72,13 @@ export const saveShareRecord = async (req, res, next) => {
     }
 }
 
+/**
+ * Receives a user id in the route parameters. Then it counts the amount of shares in the database
+ * for a particular user by id.
+ * Technically this endpoint should be authenticated, but because this is a proof-of-concept back-end it's not possible to
+ * use the real JWT EatMyRide uses to authenticate the retrieval of the amount of shares done because we do not have the
+ * private key.
+ */
 export const countShareRecordsForUser = async (req, res, next) => {
     console.log("\nShare API: GET REQUEST START")
     const userId = req.params.id
