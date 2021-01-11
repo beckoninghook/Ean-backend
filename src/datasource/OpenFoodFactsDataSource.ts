@@ -1,7 +1,7 @@
 import { DataSource } from "../interfaces/DataSource";
 import { FoodProduct } from "../models/FoodProduct";
 import axios from 'axios';
-import { SequelizeFoodProduct } from "../database/db-models/SequelizeFoodProduct";
+import validateFoodProduct from "../utils/ValidateFoodProduct";
 
 export class OpenFoodFactsDataSource implements DataSource {
     dataSourceIndicator: string = "Open Food Facts"
@@ -33,9 +33,11 @@ export class OpenFoodFactsDataSource implements DataSource {
             data.image_url
         )
 
-        return Array(
-            foodProduct
-        );
+        if (!validateFoodProduct(foodProduct)) {
+            return Promise.resolve(Array())
+        }
+
+        return Promise.resolve(Array(foodProduct))
     }
 
 }

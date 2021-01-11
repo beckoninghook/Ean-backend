@@ -1,10 +1,7 @@
 import {DataSource} from "../interfaces/DataSource";
 import {FoodProduct} from "../models/FoodProduct";
 import axios from 'axios';
-import {waitForDebugger} from "inspector";
-
-// @ts-ignore
-
+import validateFoodProduct from '../utils/ValidateFoodProduct'
 
 export class FoodRepoDataSource implements DataSource {
 
@@ -32,7 +29,7 @@ export class FoodRepoDataSource implements DataSource {
         }
     }
 
-    validateFoodProduct(data: any): boolean{
+    validateFoodProduct(data: any): boolean {
         return !(data[0].nutrients.energy_kcal.per_hundred == null || data[0].nutrients.carbohydrates.per_hundred == null ||
             data[0].nutrients.fat.per_hundred == null || data[0].nutrients.protein.per_hundred == null || data[0].display_name_translations.en == null ||
             data[0].quantity == null);
@@ -52,9 +49,11 @@ export class FoodRepoDataSource implements DataSource {
             data[0].quantity,
             data[0].images[0].medium
         )
-        if(!this.validateFoodProduct(data)){
+
+        if (!validateFoodProduct(foodProduct)) {
             return Promise.resolve(Array())
         }
+
         console.log(foodProduct)
         return Promise.resolve(Array(
             foodProduct
