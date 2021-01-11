@@ -1,7 +1,7 @@
 import {DataSource} from "../interfaces/DataSource";
 import {FoodProduct} from "../models/FoodProduct";
 import axios from 'axios';
-import validateFoodProduct from "../utils/ValidateFoodProduct";
+import validateFoodProduct from "../utils/ValidateFoodProduct"
 
 export class OpenFoodFactsDataSource implements DataSource {
     dataSourceIndicator: string = "Open Food Facts"
