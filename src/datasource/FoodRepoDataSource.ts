@@ -6,9 +6,30 @@ import axios from 'axios';
 
 
 export class FoodRepoDataSource implements DataSource {
-
     dataSourceIndicator: string = "FoodRepo"
     url: String = 'https://www.foodrepo.org/api/v3/products?barcodes='
+
+    private preferredLanguage = "en"
+
+    //FoodRepo does not have anything that qualifies as a product tag
+    private defaultTag = "Product"
+
+    private barcodeField = "barcode"
+    private nameTranslationsField = "display_name_translations"
+
+    private nutrientsField = "nutrients"
+    private caloriesKcalField = "energy_kcal"
+    private carbohydratesField = "carbohydrates"
+    private fatField = "fat"
+    private proteinField = "protein"
+    private perHundredField = "per_hundred"
+
+    private quantityField = "quantity"
+
+    private imagesField = "images"
+    private preferredImageSide = "front"
+    private preferredImageSize = "medium"
+
 
     async searchBarcode(barcode: number): Promise<FoodProduct[]> {
         try {
@@ -33,19 +54,36 @@ export class FoodRepoDataSource implements DataSource {
 
 
     convertData(data: any): Promise<FoodProduct[]> {
-        const foodProduct = new FoodProduct(
-            data[0].barcode,
-            data[0].name_translations.en,
-            data[0].nutrients.energy_kcal.per_hundred,
-            data[0].nutrients.carbohydrates.per_hundred,
-            data[0].nutrients.fat.per_hundred,
-            data[0].nutrients.protein.per_hundred,
-            data[0].display_name_translations.en,
-            data[0].quantity,
-            data[0].images[0].medium
-        )
-        return Promise.resolve(Array(
-            foodProduct
-        ));
+        try {
+            const dataToConvert = data[0];
+            if (!dataToConvert) {
+                return Promise.resolve(Array())
+            }
+            let productname = dataToConvert[this.nameTranslationsField][this.preferredLanguage]
+            if (!productname) {
+                const languagesAvailable = Object.keys(dataToConvert[this.nameTranslationsField]);
+                const language = languagesAvailable[0];
+                productname = dataToConvert[this.nameTranslationsField][language]
+            }
+            const images = dataToConvert[this.imagesField].find(images => images.categories[0].toLowerCase() == this.preferredImageSide)
+            const imageUrl = images[this.preferredImageSize]
+            const foodProduct = new FoodProduct(
+                dataToConvert[this.barcodeField],
+                productname,
+                dataToConvert[this.nutrientsField][this.caloriesKcalField][this.perHundredField],
+                dataToConvert[this.nutrientsField][this.carbohydratesField][this.perHundredField],
+                dataToConvert[this.nutrientsField][this.fatField][this.perHundredField],
+                dataToConvert[this.nutrientsField][this.proteinField][this.perHundredField],
+                this.defaultTag,
+                dataToConvert[this.quantityField],
+                imageUrl
+            )
+            return Promise.resolve(Array(
+                foodProduct
+            ));
+        } catch (e) {
+            console.log(e)
+            return Promise.resolve(Array());
+        }
     }
 }
