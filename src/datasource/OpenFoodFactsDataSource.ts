@@ -21,10 +21,16 @@ export class OpenFoodFactsDataSource implements DataSource {
     }
 
     async convertData(data: any): Promise<FoodProduct[]> {
+        var kcal: number = data.nutriments['energy-kcal_100g'];
+
+        if (!data.nutriments['energy-kcal_100g']) {
+            kcal = this.convertKJtoKCAL(data.nutriments['energy-kj_100g']);
+        }
+
         const foodProduct = new FoodProduct(
             data._id,
             data.product_name,
-            data.nutriments['energy-kcal_100g'],
+            kcal,
             data.nutriments.carbohydrates_100g,
             data.nutriments.fat_100g,
             data.nutriments.proteins_100g,
@@ -36,6 +42,15 @@ export class OpenFoodFactsDataSource implements DataSource {
         return Array(
             foodProduct
         );
+    }
+
+    
+    /*
+    * 1 kj to kcal = 0.2389 kcal
+    */
+    convertKJtoKCAL(kjres: number) {
+        const KCAL_MULTIPLIER: number = 0.2389;
+        return kjres * KCAL_MULTIPLIER
     }
 
 }
