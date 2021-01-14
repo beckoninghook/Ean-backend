@@ -36,24 +36,7 @@ export class OpenFoodFactsDataSource implements DataSource {
     }
 
     async convertData(data: any): Promise<FoodProduct[]> {
-<<<<<<< HEAD
-        var kcal: number = data.nutriments['energy-kcal_100g'];
 
-        if (!data.nutriments['energy-kcal_100g']) {
-            kcal = this.convertKJtoKCAL(data.nutriments['energy-kj_100g']);
-        }
-
-        const foodProduct = new FoodProduct(
-            data._id,
-            data.product_name,
-            kcal,
-            data.nutriments.carbohydrates_100g,
-            data.nutriments.fat_100g,
-            data.nutriments.proteins_100g,
-            data.pnns_groups_2,
-            data.product_quantity,
-            data.image_url
-=======
         let tag = data[this.FIELD_TAG_1]
         if (!tag) {
             tag = data[this.FIELD_TAG_2]
@@ -62,17 +45,22 @@ export class OpenFoodFactsDataSource implements DataSource {
             }
         }
 
+        var kcal: number = data[this.FIELD_NUTRIMENTS][this.FIELD_ENERGY_KCAL];
+
+        if (!data[this.FIELD_NUTRIMENTS][this.FIELD_ENERGY_KCAL]) {
+            kcal = this.convertKJtoKCAL(data[this.FIELD_NUTRIMENTS][this.FIELD_ENERGY_KJ]);
+        }
+
         const foodProduct = new FoodProduct(
             data[this.FIELD_BARCODE],
             data[this.FIELD_LABEL],
-            data[this.FIELD_NUTRIMENTS][this.FIELD_ENERGY_KCAL],
+            data[this.FIELD_NUTRIMENTS][kcal],
             data[this.FIELD_NUTRIMENTS][this.FIELD_CARBOHYDRATES],
             data[this.FIELD_NUTRIMENTS][this.FIELD_FAT],
             data[this.FIELD_NUTRIMENTS][this.FIELD_PROTEINS],
             tag,
             data[this.FIELD_QUANTITY],
             data[this.FIELD_IMAGE]
->>>>>>> a606a1627679c16e5b4d26fdb35567daffb1557d
         )
 
         if (!validateFoodProduct(foodProduct)) {
