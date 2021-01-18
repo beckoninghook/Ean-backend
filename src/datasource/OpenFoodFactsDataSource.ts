@@ -44,7 +44,6 @@ export class OpenFoodFactsDataSource implements DataSource {
                 tag = "Product"
             }
         }
-
         var kcal: number = data[this.FIELD_NUTRIMENTS][this.FIELD_ENERGY_KCAL];
 
         if (!data[this.FIELD_NUTRIMENTS][this.FIELD_ENERGY_KCAL]) {

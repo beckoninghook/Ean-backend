@@ -5,12 +5,12 @@
   "main": "index.js",
   "dependencies": {
     "@types/bluebird": "^3.5.33",
-    "@types/mocha": "^8.2.0",
     "@types/node": "^14.14.21",
     "@types/sequelize": "^4.28.9",
     "@types/validator": "^13.1.1",
     "big-json": "^3.1.0",
     "body-parser": "^1.19.0",
+    "chai-http": "^4.3.0",
     "express": "^4.17.1",
     "follow-redirects": "^1.13.0",
     "install": "^0.13.0",
@@ -24,7 +24,10 @@
     "unirest": "^0.6.0"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.2.0",
     "axios": "^0.21.0",
+    "chai": "^4.2.0",
     "mocha": "^8.2.1",
     "ts-node": "^8.10.2"
   },

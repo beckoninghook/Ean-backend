@@ -44,6 +44,7 @@ export class FoodProduct {
     weight: number
 
     imageUrl: string
+    static toStringTag: "foodProduct";
 
 
 
