@@ -29,10 +29,21 @@
     "ts-node": "^8.10.2"
   },
   "scripts": {
-    "test": "mocha 'test/**/*.ts'",
+    "test": "mocha",
     "start": "ts-node src/index.ts",
     "compile": "ts-node build.ts && tsc"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "mocha": {
+    "require": [
+      "ts-node/register"
+    ],
+    "recursive": true,
+    "extension": [
+      "ts",
+      "js",
+      "tsx"
+    ]
+  }
 }
