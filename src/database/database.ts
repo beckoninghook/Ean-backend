@@ -5,6 +5,6 @@ export const database = new Sequelize({
     database: 'ean-backend-database',
     dialect: 'mysql',
     username: 'root',
-    password: 'password',
+    password: '',
     models: [__dirname + "/db-models"]
 });
