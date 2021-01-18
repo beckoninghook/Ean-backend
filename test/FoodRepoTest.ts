@@ -1,58 +1,85 @@
 import {FoodProduct} from "../src/models/FoodProduct";
 import {FoodRepoDataSource} from "../src/datasource/FoodRepoDataSource";
 import {it} from "mocha";
+import chai = require('chai')
+
 
 const request = require('request')
 const assert = require('assert');
 const chai = require('chai');
 const expect = chai.expect;
+var should = chai.should();
 const urlSearch = 'https://www.foodrepo.org/api/v3/products?barcodes='
 const barcode = 7613404377888;
+const converter = new FoodRepoDataSource();
 
-
-
-describe('FoodRepo Tests', function (){
-    it('should give acces denied without api key', function (done){
+describe('FoodRepo Tests', function () {
+    it('should give acces denied without api key', function (done) {
         request.get({
-            url: urlSearch + barcode.toString()
-        },
-            function (error,respone,body){
-                let _body = {};
-                try{
-                _body = JSON.parse(body);
-            }
-            catch (e){
-                _body = {};
-            }
+                url: urlSearch + barcode.toString()
+            },
+            function (error, response, body) {
 
-            expect(respone.statusCode).to.equal(401);
+                expect(response.statusCode).to.equal(401);
 
-            done();
+                done();
             });
     });
 
-    it('should give a foodproduct',function (done){
+
+    it('should give a foodproduct', function (done) {
         request.get({
-                url: urlSearch + barcode.toString(),headers: {
+                url: urlSearch + barcode.toString(), headers: {
                     'Authorization': 'Token token=d558bf263e21e34ad76c95c0f006d0de'
                 }
             },
-            function (error,respone,body){
+            function (error, response, body) {
                 let _body = {};
-                try{
+                try {
                     _body = JSON.parse(body);
-                }
-                catch (e){
+                } catch (e) {
                     _body = {};
                 }
 
-                expect(respone.statusCode).to.equal(200);
-                assert.notStrictEqual(_body,null, "should not be null");
+                expect(response.statusCode).to.equal(200);
+                assert.notStrictEqual(_body, null, "should not be null");
                 console.log(_body)
                 done();
             });
     });
 
-})
+
+    it('should convert data', function (done) {
+        request.get({
+            url: urlSearch + barcode.toString(), headers: {
+                'Authorization': 'Token token=d558bf263e21e34ad76c95c0f006d0de'
+            }
+        }, async function (error, response, body) {
+            let _body;
+            try {
+                _body = JSON.parse(body);
+                const converted = await converter.convertData(_body.data);
+                console.log(converted[0]);
+                expect(converted).to.be.a(FoodProduct);
+            } catch (e) {
+                _body = {};
+            }
+
+            done();
+        });
+
+    });
+
+
+
+    it('searchbarcode should return a foodprocut', async function(){
+        let convertedFood = await converter.searchBarcode(barcode);
+        console.log(convertedFood);
+    });
+
+
+
+
+});
 
 
