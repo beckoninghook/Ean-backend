@@ -1,7 +1,7 @@
 import {DataSource} from "../interfaces/DataSource";
 import {FoodProduct} from "../models/FoodProduct";
 import axios from 'axios';
-import validateFoodProduct from '../utils/ValidateFoodProduct'
+import validateFoodProduct from "../utils/ValidateFoodProduct"
 
 export class FoodRepoDataSource implements DataSource {
     dataSourceIndicator: string = "FoodRepo"
@@ -78,9 +78,9 @@ export class FoodRepoDataSource implements DataSource {
                 dataToConvert[this.FIELD_PRODUCT_QUANTITY],
                 imageUrl
             )
-                    if (!validateFoodProduct(foodProduct)) {
-            return Promise.resolve(Array())
-        }
+            if (!validateFoodProduct(foodProduct)) {
+                return Promise.resolve(Array())
+            }
             return Promise.resolve(Array(
                 foodProduct
             ));

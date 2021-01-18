@@ -1,7 +1,7 @@
 import {DataSource} from "../interfaces/DataSource";
 import {FoodProduct} from "../models/FoodProduct";
 import axios from 'axios';
-import validateFoodProduct from "../utils/ValidateFoodProduct";
+import validateFoodProduct from "../utils/ValidateFoodProduct"
 
 export class OpenFoodFactsDataSource implements DataSource {
     dataSourceIndicator: string = "Open Food Facts"
@@ -36,6 +36,7 @@ export class OpenFoodFactsDataSource implements DataSource {
     }
 
     async convertData(data: any): Promise<FoodProduct[]> {
+
         let tag = data[this.FIELD_TAG_1]
         if (!tag) {
             tag = data[this.FIELD_TAG_2]
@@ -44,10 +45,16 @@ export class OpenFoodFactsDataSource implements DataSource {
             }
         }
 
+        var kcal: number = data[this.FIELD_NUTRIMENTS][this.FIELD_ENERGY_KCAL];
+
+        if (!data[this.FIELD_NUTRIMENTS][this.FIELD_ENERGY_KCAL]) {
+            kcal = this.convertKJtoKCAL(data[this.FIELD_NUTRIMENTS][this.FIELD_ENERGY_KJ]);
+        }
+
         const foodProduct = new FoodProduct(
             data[this.FIELD_BARCODE],
             data[this.FIELD_LABEL],
-            data[this.FIELD_NUTRIMENTS][this.FIELD_ENERGY_KCAL],
+            data[this.FIELD_NUTRIMENTS][kcal],
             data[this.FIELD_NUTRIMENTS][this.FIELD_CARBOHYDRATES],
             data[this.FIELD_NUTRIMENTS][this.FIELD_FAT],
             data[this.FIELD_NUTRIMENTS][this.FIELD_PROTEINS],
@@ -61,6 +68,15 @@ export class OpenFoodFactsDataSource implements DataSource {
         }
 
         return Promise.resolve(Array(foodProduct))
+    }
+
+    
+    /*
+    * 1 kj to kcal = 0.2389 kcal
+    */
+    convertKJtoKCAL(kjres: number) {
+        const KCAL_MULTIPLIER: number = 0.2389;
+        return kjres * KCAL_MULTIPLIER
     }
 
 }
