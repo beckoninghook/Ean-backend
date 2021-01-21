@@ -27,10 +27,12 @@ export class OpenFoodFactsDataSource implements DataSource {
     private FIELD_IMAGE = "image_url"
 
     async searchBarcode(barcode: number): Promise<FoodProduct[]> {
-        const data = await axios.get(this.url + barcode.toString())
+        const url = this.url + barcode.toString()
+        const data = await axios.get(url)
         if (data.data.status_verbose == this.STATUS_NOT_FOUND) {
             return [];
         }
+        console.log(data.data.product)
         const unconvertedProduct = data.data.product
         return this.convertData(unconvertedProduct);
     }
@@ -44,7 +46,7 @@ export class OpenFoodFactsDataSource implements DataSource {
                 tag = "Product"
             }
         }
-        var kcal: number = data[this.FIELD_NUTRIMENTS][this.FIELD_ENERGY_KCAL];
+        let kcal: number = data[this.FIELD_NUTRIMENTS][this.FIELD_ENERGY_KCAL];
 
         if (!data[this.FIELD_NUTRIMENTS][this.FIELD_ENERGY_KCAL]) {
             kcal = this.convertKJtoKCAL(data[this.FIELD_NUTRIMENTS][this.FIELD_ENERGY_KJ]);
@@ -53,7 +55,7 @@ export class OpenFoodFactsDataSource implements DataSource {
         const foodProduct = new FoodProduct(
             data[this.FIELD_BARCODE],
             data[this.FIELD_LABEL],
-            data[this.FIELD_NUTRIMENTS][kcal],
+            kcal,
             data[this.FIELD_NUTRIMENTS][this.FIELD_CARBOHYDRATES],
             data[this.FIELD_NUTRIMENTS][this.FIELD_FAT],
             data[this.FIELD_NUTRIMENTS][this.FIELD_PROTEINS],
