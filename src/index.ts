@@ -41,5 +41,4 @@ database
         console.log(error)
     })
 
-
-
+export default app;
