@@ -32,13 +32,14 @@ export class OpenFoodFactsDataSource implements DataSource {
         if (data.data.status_verbose == this.STATUS_NOT_FOUND) {
             return [];
         }
-        console.log(data.data.product)
         const unconvertedProduct = data.data.product
         return this.convertData(unconvertedProduct);
     }
 
     async convertData(data: any): Promise<FoodProduct[]> {
-
+        if (!data) {
+            return Promise.resolve(Array())
+        }
         let tag = data[this.FIELD_TAG_1]
         if (!tag) {
             tag = data[this.FIELD_TAG_2]
