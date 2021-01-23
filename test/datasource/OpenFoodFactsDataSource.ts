@@ -11,8 +11,9 @@ const myObj = {
     [FoodProduct.toStringTag]: 'foodProduct'
 };
 
+describe('OpenFoodFactsDataSource', () => {
+    //Deze tests testen niet de OpenFoodFacts Data Source.
 
-describe('searchBarcode', () => {
     it('Api works ',  (done) => { // the single test
         chai.request('http://localhost:8080')
             .get('/api/v1/foodproduct?barcode=7613404377888')
@@ -32,6 +33,7 @@ describe('searchBarcode', () => {
             });
         done();
     });
+
     it('should convert Kj to Kcal', function (){
         const dataSource = new OpenFoodFactsDataSource;
         const kj: number = 2000;
