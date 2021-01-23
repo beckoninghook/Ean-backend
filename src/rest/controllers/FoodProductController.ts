@@ -1,12 +1,13 @@
-import { FoodProduct } from "../../models/FoodProduct";
-import { DataSource } from "../../interfaces/DataSource";
+import {FoodProduct} from "../../models/FoodProduct";
+import {DataSource} from "../../interfaces/DataSource";
 import Config from "../../config";
-import { performance } from "perf_hooks"
-import { SequelizeFoodProduct } from "../../database/db-models/SequelizeFoodProduct";
+import {performance} from "perf_hooks"
+import {SequelizeFoodProduct} from "../../database/db-models/SequelizeFoodProduct";
+
 /**
  *  Main function used by the GET endpoint on /foodproduct to query a barcode.
-    It calls searchBarcode with the barcode in the query parameters and the
-    list of datasources in the configuration.
+ It calls searchBarcode with the barcode in the query parameters and the
+ list of datasources in the configuration.
  * @param req
  * @param res
  * @param next
@@ -60,27 +61,36 @@ export const getBarcode = async (req, res, next) => {
 async function searchBarcode(barcode: number, datasources: DataSource[]): Promise<FoodProduct | null> {
     const timer = performance.now()
     let result: FoodProduct = null;
-    for (let d of datasources) {
-        const dataSourceTimer = performance.now()
-        let dataSourceResults = await d.searchBarcode(barcode)
-        const dataSourceTimerEnd = performance.now()
-        console.log(`Received ${dataSourceResults.length} results from data source: ${d.dataSourceIndicator} in ${Math.round(((dataSourceTimerEnd - dataSourceTimer) + Number.EPSILON) * 100) / 100} milliseconds.`)
-        if (dataSourceResults.length > 0) {
-            for (let result of dataSourceResults) {
-                const foodData = new SequelizeFoodProduct(result);
-                //Before saving to the database do a simple check to see if it doesnt already exists
-                let food = await SequelizeFoodProduct.findOne({ where: { eanBarcode: result.eanBarcode } })
-                if (!food) {
-                    console.log("Saving product to database");
-                    foodData.save();
-                }
-            }
-            result = dataSourceResults[0]
+    let useDatabase = false;
+    if (datasources.find(datasource => {
+            return datasource.dataSourceIndicator === "EAN-Backend Database"
         }
-        if (result != null) {
-            break;
-        }
+    ) != null) {
+        useDatabase = true;
     }
+        for (let d of datasources) {
+            const dataSourceTimer = performance.now()
+            let dataSourceResults = await d.searchBarcode(barcode)
+            const dataSourceTimerEnd = performance.now()
+            console.log(`Received ${dataSourceResults.length} results from data source: ${d.dataSourceIndicator} in ${Math.round(((dataSourceTimerEnd - dataSourceTimer) + Number.EPSILON) * 100) / 100} milliseconds.`)
+            if (dataSourceResults.length > 0) {
+                if (useDatabase) {
+                    for (let result of dataSourceResults) {
+                        const foodData = new SequelizeFoodProduct(result);
+                        //Before saving to the database do a simple check to see if it doesnt already exists
+                        let food = await SequelizeFoodProduct.findOne({where: {eanBarcode: result.eanBarcode}})
+                        if (!food) {
+                            console.log("Saving product to database");
+                            foodData.save();
+                        }
+                    }
+                }
+                result = dataSourceResults[0]
+            }
+            if (result != null) {
+                break;
+            }
+        }
     const timerEnd = performance.now()
     console.log(`Search took ${Math.round(((timerEnd - timer) +
         Number.EPSILON) * 100) / 100} milliseconds in total.`)
