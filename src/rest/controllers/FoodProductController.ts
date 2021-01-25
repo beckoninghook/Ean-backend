@@ -70,6 +70,8 @@ async function searchBarcode(barcode: number, datasources: DataSource[]): Promis
     }
         for (let d of datasources) {
             const dataSourceTimer = performance.now()
+            //Because DataSource is an interface, we can call this method on each data source object without
+            // any assumptions about the implementation.
             let dataSourceResults = await d.searchBarcode(barcode)
             const dataSourceTimerEnd = performance.now()
             console.log(`Received ${dataSourceResults.length} results from data source: ${d.dataSourceIndicator} in ${Math.round(((dataSourceTimerEnd - dataSourceTimer) + Number.EPSILON) * 100) / 100} milliseconds.`)

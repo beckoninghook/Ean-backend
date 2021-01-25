@@ -39,7 +39,6 @@ const launchRESTServer = () => {
 const startApp = () => {
     database.authenticate()
         .then(() => {
-            console.log("Connection can be established.")
             database
                 .sync({alter: true})
                 .then(() => {
