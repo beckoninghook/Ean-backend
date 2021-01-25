@@ -1,32 +1,18 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
-import app from "../../../src/application"
-import {testDatabase} from "../../../src/database/testDatabase"
-import Config from "../../../src/config";
 import {SequelizeUser} from "../../../src/database/db-models/SequelizeUser";
 import {SequelizeShareRecord} from "../../../src/database/db-models/SequelizeShareRecord";
-
-const should = chai.should();
 
 chai.use(chaiHttp);
 
 describe('ShareController', () => {
-    before((done) => {
-        testDatabase
-            .sync({force: true})
-            .then(() => {
-                app.listen(Config.TEST_PORT)
-                done()
-            })
-    })
-
     beforeEach((done) => {
-        SequelizeUser.destroy(
+        SequelizeShareRecord.destroy(
             {
                 where: {},
             }
         )
-        SequelizeShareRecord.destroy(
+        SequelizeUser.destroy(
             {
                 where: {},
             }
@@ -72,5 +58,18 @@ describe('ShareController', () => {
         res.should.have.status(200)
         res.body.should.be.a('object')
         res.body.count.should.equal(3)
+    })
+
+    after(async () => {
+        await SequelizeUser.destroy(
+            {
+                where: {},
+            }
+        )
+        await SequelizeShareRecord.destroy(
+            {
+                where: {},
+            }
+        )
     })
 })

@@ -11,7 +11,6 @@ const barcode = 7613404377888;
 const dataSource = new FoodRepoDataSource();
 
 describe('FoodRepo Tests', function () {
-    // Dit is verkeerd, het moet FoodRepoDataSource testen, niet de FoodRepo API
     it('should give access denied without api key', function (done) {
         request.get({
                 url: urlSearch + barcode.toString()
@@ -70,7 +69,6 @@ describe('FoodRepo Tests', function () {
         let foodproduct = await dataSource.searchBarcode(barcode);
         console.log(foodproduct);
     });
-
 });
 
 

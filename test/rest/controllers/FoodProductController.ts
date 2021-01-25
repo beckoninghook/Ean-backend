@@ -1,4 +1,3 @@
-import done from 'mocha';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 
@@ -8,7 +7,7 @@ chai.should();
 
 describe('FoodProductController GET tests', () => {
     it('should return a correct foodproduct when queried with an existing barcode.',   (done) => {
-        chai.request('http://localhost:8080')
+        chai.request('http://localhost:8082')
         .get('/api/v1/foodproduct?barcode=7613404377888')
         .end((err, res) => {
             res.should.have.status(200);
@@ -20,7 +19,7 @@ describe('FoodProductController GET tests', () => {
     });
 
     it('should return 404 when querying a nonexisting barcode.',  (done) => {
-        chai.request('http://localhost:8080')
+        chai.request('http://localhost:8082')
         .get('/api/v1/foodproduct?barcode=7613404077888')
         .end((err, res) => {
             res.should.have.status(404);

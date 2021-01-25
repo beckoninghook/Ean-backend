@@ -1,21 +1,15 @@
-import {FoodProduct} from "../../src/models/FoodProduct";
 import {OpenFoodFactsDataSource} from "../../src/datasource/OpenFoodFactsDataSource";
-import { expect } from 'chai';
-import chai from 'chai';
+import chai, {expect} from 'chai';
 import chaiHttp from 'chai-http';
+import {SequelizeFoodProduct} from "../../src/database/db-models/SequelizeFoodProduct";
 
 chai.use(chaiHttp);
 chai.should();
 const dataSource = new OpenFoodFactsDataSource;
-const myObj = {
-    [FoodProduct.toStringTag]: 'foodProduct'
-};
 
 describe('OpenFoodFactsDataSource', () => {
-    //Deze tests testen niet de OpenFoodFacts Data Source.
-
     it('Api works ',  (done) => { // the single test
-        chai.request('http://localhost:8080')
+        chai.request('http://localhost:8082')
             .get('/api/v1/foodproduct?barcode=7613404377888')
             .end((err, res) => {
                 res.should.have.status(200);
@@ -24,7 +18,7 @@ describe('OpenFoodFactsDataSource', () => {
             });
     });
     it('Should convert data ',  (done) => { // the single test
-        chai.request('http://localhost:8080')
+        chai.request('http://localhost:8082')
             .get('/api/v1/foodproduct?barcode=7613404377888')
             .end(async (err, res) => {
                 const data = JSON.parse(res.body);
@@ -40,4 +34,12 @@ describe('OpenFoodFactsDataSource', () => {
         const kcal = dataSource.convertKJtoKCAL(kj)
         expect(kcal).to.equal(kj*0.2389);
     });
+
+    after(async () => {
+        await SequelizeFoodProduct.destroy(
+            {
+                where: {},
+            }
+        )
+    })
 });

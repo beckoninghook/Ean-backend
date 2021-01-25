@@ -49,5 +49,6 @@
       "js",
       "tsx"
     ]
-  }
+  },
+  "files": ["./test/SetupTests.ts"]
 }

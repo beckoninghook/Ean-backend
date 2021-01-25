@@ -1,6 +1,5 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import {testDatabase} from "../../src/database/testDatabase"
 import {SequelizeFoodProduct} from "../../src/database/db-models/SequelizeFoodProduct";
 import {DatabaseDataSource} from "../../src/datasource/DatabaseDataSource";
 
@@ -11,13 +10,8 @@ let datasource: DatabaseDataSource;
 
 describe('searchBarcodeInDatabase', () => {
     before((done) => {
-        //Before all tests, launch database
-        testDatabase
-            .sync({force: true})
-            .then(() => {
-                done()
-            })
         datasource = new DatabaseDataSource()
+        done()
     })
 
     beforeEach((done) => {
@@ -51,4 +45,11 @@ describe('searchBarcodeInDatabase', () => {
         result[0].eanBarcode.should.equal(barcode.toString());
     })
 
+    after(async () => {
+        await SequelizeFoodProduct.destroy(
+            {
+                where: {},
+            }
+        )
+    })
 });
