@@ -1,7 +1,6 @@
 import done from 'mocha';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import startApp from "../../../src/application";
 
 // Configure chai
 chai.use(chaiHttp);
