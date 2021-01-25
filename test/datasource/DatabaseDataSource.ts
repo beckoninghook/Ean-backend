@@ -1,30 +1,27 @@
-import {FoodProduct} from "../../src/models/FoodProduct";
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from "../../src/application"
 import {testDatabase} from "../../src/database/testDatabase"
 import {SequelizeFoodProduct} from "../../src/database/db-models/SequelizeFoodProduct";
-import Config from "../../src/config";
+import {DatabaseDataSource} from "../../src/datasource/DatabaseDataSource";
 
 chai.use(chaiHttp);
 chai.should();
 
-const foodObject = {
-    [FoodProduct.toStringTag]: 'foodProduct'
-};
-
+let datasource: DatabaseDataSource;
 
 describe('searchBarcodeInDatabase', () => {
     before((done) => {
+        //Before all tests, launch database
         testDatabase
             .sync({force: true})
             .then(() => {
-                app.listen(Config.TEST_PORT)
                 done()
             })
+        datasource = new DatabaseDataSource()
     })
 
     beforeEach((done) => {
+        //Before test, destroy all food products in the test database
         SequelizeFoodProduct.destroy(
             {
                 where: {},
@@ -34,24 +31,24 @@ describe('searchBarcodeInDatabase', () => {
     })
 
     it('should return a foodproduct ',  async () => {
+        //Setup
         const barcode: number = 7613404377888;
         let product = new SequelizeFoodProduct()
-        product.eanBarcode = "7613404377888"
-        const foodData = new SequelizeFoodProduct(product)
+        product.eanBarcode = barcode.toString()
         try {
-            foodData.save()
+            //Wait for database to save product
+            await product.save()
         } catch(e) {
             console.log(e)
         }
 
-        const testProduct = await chai.request("http://localhost:8082")
-            .get('/api/v1/foodproduct/' + barcode)
+        //Let datasource search for barcode directly and wait for this
+        const result = await datasource.searchBarcode(barcode)
 
-        console.log(testProduct.body)
-
-        testProduct.should.have.status(200)
-        testProduct.body.should.be.an('Array')
-        //testProduct.body.should.be.an('Array').of('foodProduct')
+        //Assertions
+        result.should.be.an('Array')
+        result.length.should.equal(1);
+        result[0].eanBarcode.should.equal(barcode.toString());
     })
 
 });
