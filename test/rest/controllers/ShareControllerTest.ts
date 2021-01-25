@@ -64,7 +64,6 @@ describe('ShareController', () => {
             console.log(e)
         }
 
-
         const res = await chai.request("http://localhost:8082")
             .get('/api/v1/share/' + user.userId)
 
