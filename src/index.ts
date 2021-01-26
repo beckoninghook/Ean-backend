@@ -49,8 +49,5 @@ const launch = () => {
 
 launch()
 
-export default app;
-
-
 
 

@@ -3,33 +3,33 @@ import chai, {expect} from 'chai';
 import chaiHttp from 'chai-http';
 import {SequelizeFoodProduct} from "../../src/database/db-models/SequelizeFoodProduct";
 
+import fs from "fs";
+import util from "util";
+import * as path from "path";
+
 chai.use(chaiHttp);
 chai.should();
-const dataSource = new OpenFoodFactsDataSource;
+const dataSource = new OpenFoodFactsDataSource();
 
-describe('OpenFoodFactsDataSource', () => {
-    it('Api works ',  (done) => { // the single test
-        chai.request('http://localhost:8082')
-            .get('/api/v1/foodproduct?barcode=7613404377888')
-            .end((err, res) => {
-                res.should.have.status(200);
-                res.body.should.be.a('object');
-                done();
-            });
-    });
-    it('Should convert data ',  (done) => { // the single test
-        chai.request('http://localhost:8082')
-            .get('/api/v1/foodproduct?barcode=7613404377888')
-            .end(async (err, res) => {
-                const data = JSON.parse(res.body);
-                const converted = await dataSource.convertData(data.data);
-                converted.should.be.an('foodProduct');
-            });
-        done();
+describe('OpenFoodFactsDataSource',  () => {
+    it('returns a foodproduct',  async () => {
+        const result = await dataSource.searchBarcode(3229820160672)
+        result.should.be.an("array")
+        result[0].label.should.equal("Croustillant chocolat")
     });
 
-    it('should convert Kj to Kcal', function (){
-        const dataSource = new OpenFoodFactsDataSource;
+    it('converts data',  async () => {
+        fs.readFile(path.join("test/testdata/openfoodfacts_test_data.json"), (data) => {
+            dataSource.convertData(data)
+                .then((result) => {
+                    result.should.be.a("object")
+                    result.should.be.a("FoodProduct")
+                });
+
+        })
+    });
+
+    it('should convert Kj to Kcal', () => {
         const kj: number = 2000;
         const kcal = dataSource.convertKJtoKCAL(kj)
         expect(kcal).to.equal(kj*0.2389);

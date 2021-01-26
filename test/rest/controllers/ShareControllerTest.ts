@@ -6,18 +6,17 @@ import {SequelizeShareRecord} from "../../../src/database/db-models/SequelizeSha
 chai.use(chaiHttp);
 
 describe('ShareController', () => {
-    beforeEach((done) => {
-        SequelizeShareRecord.destroy(
+    beforeEach(async () => {
+        await SequelizeShareRecord.destroy(
             {
                 where: {},
             }
         )
-        SequelizeUser.destroy(
+        await SequelizeUser.destroy(
             {
                 where: {},
             }
         )
-        done()
     })
 
     it('should be able to insert a share record for a nonexisting user', (done) => {
@@ -58,6 +57,24 @@ describe('ShareController', () => {
         res.should.have.status(200)
         res.body.should.be.a('object')
         res.body.count.should.equal(3)
+    })
+
+    it('should return status code 404 NOT FOUND when no user is found in GET request', async () => {
+        const res = await chai.request("http://localhost:8082")
+            .get('/api/v1/share/' + 1)
+        res.should.have.status(404)
+    })
+
+    it('should return status code 400 BAD REQUEST when no user id is specified in GET request', async () => {
+        const res = await chai.request("http://localhost:8082")
+            .get('/api/v1/share/')
+        res.should.have.status(400)
+    })
+
+    it('should return status code 400 BAD REQUEST when no user data is attached to POST request', async () => {
+        const res = await chai.request("http://localhost:8082")
+            .post('/api/v1/share/')
+        res.should.have.status(400)
     })
 
     after(async () => {

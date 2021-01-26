@@ -8,6 +8,7 @@ const app: Express = express();
 
 app.use(bodyParser.json());
 
+//Cross-origin
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
@@ -15,9 +16,11 @@ app.use((req, res, next) => {
     next();
 })
 
+//Setup routes
 app.use('/api/v1', foodProductRoutes)
 app.use('/api/v1', shareRoutes)
 
+//Setup error response middleware
 app.use(errorResponse)
 
 export default app;

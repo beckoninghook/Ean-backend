@@ -11,6 +11,10 @@ const requiredFields: string[] = [
     "weight",
 ]
 
+/**
+ * This function validates whether an entered FoodProduct object is complete enough for sending as a response.
+ * @param foodproduct
+ */
 const validateFoodProduct = (foodproduct: FoodProduct): boolean => {
     const keys = Object.keys(foodproduct);
     const missingKeys = []

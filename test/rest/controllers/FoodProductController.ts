@@ -1,5 +1,6 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+import {SequelizeFoodProduct} from "../../../src/database/db-models/SequelizeFoodProduct";
 
 // Configure chai
 chai.use(chaiHttp);
@@ -27,5 +28,13 @@ describe('FoodProductController GET tests', () => {
             done();
          });
     });
+
+    after(async () => {
+        await SequelizeFoodProduct.destroy(
+            {
+                where: {},
+            }
+        )
+    })
 });
 

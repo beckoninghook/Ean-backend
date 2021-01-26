@@ -5,7 +5,7 @@ import Config from "../src/config";
 let server;
 
 before(async () => {
-    await testDatabase.sync({force: true, logging: false})
+    await testDatabase.sync({force: true})
     server = await app.listen(Config.TEST_PORT)
 })
 

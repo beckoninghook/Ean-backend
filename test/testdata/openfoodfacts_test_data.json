@@ -1,0 +1,468 @@
+[{
+  "status_verbose": "product found",
+  "status": 1,
+  "code": "7613404377888",
+  "product": {
+    "editors_tags": [
+      "yuka.sY2b0xO6T85zoF3NwEKvlndVDOH5-S7dOhHvxHGsx-WJE5fvZt5o_9PzKag",
+      "kiliweb",
+      "yuka.sY2b0xO6T85zoF3NwEKvlmJWVODlpxDkJg7Vu32Qxu-qNKXLPNF249THFKs"
+    ],
+    "states_hierarchy": [
+      "en:to-be-completed",
+      "en:nutrition-facts-completed",
+      "en:ingredients-to-be-completed",
+      "en:expiration-date-to-be-completed",
+      "en:packaging-code-to-be-completed",
+      "en:characteristics-to-be-completed",
+      "en:origins-to-be-completed",
+      "en:categories-to-be-completed",
+      "en:brands-to-be-completed",
+      "en:packaging-to-be-completed",
+      "en:quantity-to-be-completed",
+      "en:product-name-completed",
+      "en:photos-to-be-validated",
+      "en:packaging-photo-to-be-selected",
+      "en:nutrition-photo-selected",
+      "en:ingredients-photo-to-be-selected",
+      "en:front-photo-selected",
+      "en:photos-uploaded"
+    ],
+    "nutriments": {
+      "sodium": 0,
+      "sugars_value": 7,
+      "carbohydrates_unit": "g",
+      "energy-kcal_unit": "kcal",
+      "energy_unit": "kcal",
+      "carbohydrates": 10,
+      "salt_100g": 0,
+      "energy_100g": 297,
+      "proteins_value": 3.2,
+      "carbohydrates_100g": 10,
+      "sodium_unit": "g",
+      "fat_unit": "g",
+      "sugars_100g": 7,
+      "saturated-fat_unit": "g",
+      "energy_value": 71,
+      "fat_100g": 1.9,
+      "proteins_unit": "g",
+      "salt_value": 0,
+      "energy-kcal": 71,
+      "energy-kcal_value": 71,
+      "saturated-fat_value": 0.5,
+      "carbohydrates_value": 10,
+      "salt_unit": "g",
+      "sugars_unit": "g",
+      "salt": 0,
+      "sodium_100g": 0,
+      "energy": 297,
+      "saturated-fat": 0.5,
+      "energy-kcal_100g": 71,
+      "fat_value": 1.9,
+      "proteins_100g": 3.2,
+      "proteins": 3.2,
+      "saturated-fat_100g": 0.5,
+      "fat": 1.9,
+      "sodium_value": 0,
+      "sugars": 7
+    },
+    "pnns_groups_1": "unknown",
+    "allergens_from_ingredients": "",
+    "entry_dates_tags": [
+      "2020-11-08",
+      "2020-11",
+      "2020"
+    ],
+    "last_edit_dates_tags": [
+      "2021-01-05",
+      "2021-01",
+      "2021"
+    ],
+    "last_image_dates_tags": [
+      "2021-01-05",
+      "2021-01",
+      "2021"
+    ],
+    "_keywords": [
+      "poi",
+      "abricot",
+      "chiche"
+    ],
+    "complete": 0,
+    "checkers_tags": [],
+    "traces": "",
+    "data_quality_errors_tags": [],
+    "data_quality_info_tags": [
+      "en:packaging-data-incomplete"
+    ],
+    "countries_tags": [
+      "en:switzerland"
+    ],
+    "image_nutrition_thumb_url": "https://static.openfoodfacts.org/images/products/761/340/437/7888/nutrition_fr.10.100.jpg",
+    "image_thumb_url": "https://static.openfoodfacts.org/images/products/761/340/437/7888/front_fr.8.100.jpg",
+    "ecoscore_tags": [
+      "unknown"
+    ],
+    "data_sources": "App - yuka, Apps",
+    "languages": {
+      "en:french": 3
+    },
+    "last_modified_by": "kiliweb",
+    "nova_group_debug": "no nova group when the product does not have ingredients",
+    "informers_tags": [
+      "yuka.sY2b0xO6T85zoF3NwEKvlndVDOH5-S7dOhHvxHGsx-WJE5fvZt5o_9PzKag",
+      "kiliweb"
+    ],
+    "photographers_tags": [
+      "kiliweb"
+    ],
+    "code": "7613404377888",
+    "selected_images": {
+      "front": {
+        "small": {
+          "fr": "https://static.openfoodfacts.org/images/products/761/340/437/7888/front_fr.8.200.jpg"
+        },
+        "display": {
+          "fr": "https://static.openfoodfacts.org/images/products/761/340/437/7888/front_fr.8.400.jpg"
+        },
+        "thumb": {
+          "fr": "https://static.openfoodfacts.org/images/products/761/340/437/7888/front_fr.8.100.jpg"
+        }
+      },
+      "nutrition": {
+        "small": {
+          "fr": "https://static.openfoodfacts.org/images/products/761/340/437/7888/nutrition_fr.10.200.jpg"
+        },
+        "display": {
+          "fr": "https://static.openfoodfacts.org/images/products/761/340/437/7888/nutrition_fr.10.400.jpg"
+        },
+        "thumb": {
+          "fr": "https://static.openfoodfacts.org/images/products/761/340/437/7888/nutrition_fr.10.100.jpg"
+        }
+      }
+    },
+    "nutrition_grades_tags": [
+      "unknown"
+    ],
+    "allergens_tags": [],
+    "image_nutrition_small_url": "https://static.openfoodfacts.org/images/products/761/340/437/7888/nutrition_fr.10.200.jpg",
+    "data_quality_bugs_tags": [],
+    "lc": "fr",
+    "data_quality_tags": [
+      "en:packaging-data-incomplete",
+      "en:ecoscore-origins-of-ingredients-origins-are-100-percent-unknown",
+      "en:ecoscore-packaging-packaging-data-missing"
+    ],
+    "image_small_url": "https://static.openfoodfacts.org/images/products/761/340/437/7888/front_fr.8.200.jpg",
+    "image_nutrition_url": "https://static.openfoodfacts.org/images/products/761/340/437/7888/nutrition_fr.10.400.jpg",
+    "lang": "fr",
+    "completeness": 0.275,
+    "data_sources_tags": [
+      "app-yuka",
+      "apps"
+    ],
+    "product_name": "Pois chiches abricot",
+    "states": "en:to-be-completed, en:nutrition-facts-completed, en:ingredients-to-be-completed, en:expiration-date-to-be-completed, en:packaging-code-to-be-completed, en:characteristics-to-be-completed, en:origins-to-be-completed, en:categories-to-be-completed, en:brands-to-be-completed, en:packaging-to-be-completed, en:quantity-to-be-completed, en:product-name-completed, en:photos-to-be-validated, en:packaging-photo-to-be-selected, en:nutrition-photo-selected, en:ingredients-photo-to-be-selected, en:front-photo-selected, en:photos-uploaded",
+    "nova_group_tags": [
+      "not-applicable"
+    ],
+    "correctors_tags": [
+      "yuka.sY2b0xO6T85zoF3NwEKvlmJWVODlpxDkJg7Vu32Qxu-qNKXLPNF249THFKs",
+      "kiliweb"
+    ],
+    "last_editor": "kiliweb",
+    "last_image_t": 1609877303,
+    "allergens_from_user": "(fr) ",
+    "data_quality_warnings_tags": [
+      "en:ecoscore-origins-of-ingredients-origins-are-100-percent-unknown",
+      "en:ecoscore-packaging-packaging-data-missing"
+    ],
+    "traces_hierarchy": [],
+    "rev": 10,
+    "languages_hierarchy": [
+      "en:french"
+    ],
+    "image_front_thumb_url": "https://static.openfoodfacts.org/images/products/761/340/437/7888/front_fr.8.100.jpg",
+    "languages_tags": [
+      "en:french",
+      "en:1"
+    ],
+    "last_modified_t": 1609877303,
+    "nutrient_levels_tags": [],
+    "update_key": "nutriscore-20200119",
+    "categories_properties": {},
+    "pnns_groups_2": "unknown",
+    "countries_hierarchy": [
+      "en:switzerland"
+    ],
+    "misc_tags": [
+      "en:nutriscore-not-computed",
+      "en:nutriscore-missing-category"
+    ],
+    "id": "7613404377888",
+    "max_imgid": "4",
+    "countries": "en:ch",
+    "nutrient_levels": {},
+    "traces_from_user": "(fr) ",
+    "packagings": [
+      {
+        "material": "en:unknown",
+        "shape": "en:unknown"
+      }
+    ],
+    "popularity_key": 12,
+    "interface_version_created": "20150316.jqm2",
+    "sortkey": 1609877303,
+    "created_t": 1604825746,
+    "categories_properties_tags": [
+      "all-products",
+      "categories-unknown",
+      "agribalyse-food-code-unknown",
+      "agribalyse-proxy-food-code-unknown",
+      "ciqual-food-code-unknown",
+      "agribalyse-unknown"
+    ],
+    "pnns_groups_2_tags": [
+      "unknown",
+      "missing-category"
+    ],
+    "states_tags": [
+      "en:to-be-completed",
+      "en:nutrition-facts-completed",
+      "en:ingredients-to-be-completed",
+      "en:expiration-date-to-be-completed",
+      "en:packaging-code-to-be-completed",
+      "en:characteristics-to-be-completed",
+      "en:origins-to-be-completed",
+      "en:categories-to-be-completed",
+      "en:brands-to-be-completed",
+      "en:packaging-to-be-completed",
+      "en:quantity-to-be-completed",
+      "en:product-name-completed",
+      "en:photos-to-be-validated",
+      "en:packaging-photo-to-be-selected",
+      "en:nutrition-photo-selected",
+      "en:ingredients-photo-to-be-selected",
+      "en:front-photo-selected",
+      "en:photos-uploaded"
+    ],
+    "ecoscore_data": {
+      "status": "unknown",
+      "agribalyse": {
+        "warning": "missing_agribalyse_match"
+      },
+      "missing": {
+        "origins": 1,
+        "categories": 1,
+        "packagings": 1
+      },
+      "adjustments": {
+        "production_system": {},
+        "origins_of_ingredients": {
+          "epi_score": 0,
+          "warning": "origins_are_100_percent_unknown",
+          "aggregated_origins": [
+            {
+              "origin": "en:unknown",
+              "percent": 100
+            }
+          ],
+          "origins_from_origins_field": [
+            "en:unknown"
+          ],
+          "epi_value": -5,
+          "transportation_score": 0,
+          "value": -5,
+          "transportation_value": 0
+        },
+        "threatened_species": {},
+        "packaging": {
+          "packagings": [
+            {
+              "ecoscore_shape_ratio": 1,
+              "ecoscore_material_score": 0,
+              "material": "en:unknown",
+              "shape": "en:unknown"
+            }
+          ],
+          "warning": "packaging_data_missing",
+          "value": -10,
+          "score": 0
+        }
+      },
+      "missing_agribalyse_match_warning": 1
+    },
+    "image_url": "https://static.openfoodfacts.org/images/products/761/340/437/7888/front_fr.8.400.jpg",
+    "allergens_hierarchy": [],
+    "nutrition_data_prepared_per": "100g",
+    "codes_tags": [
+      "code-13",
+      "7613404377xxx",
+      "761340437xxxx",
+      "76134043xxxxx",
+      "7613404xxxxxx",
+      "761340xxxxxxx",
+      "76134xxxxxxxx",
+      "7613xxxxxxxxx",
+      "761xxxxxxxxxx",
+      "76xxxxxxxxxxx",
+      "7xxxxxxxxxxxx"
+    ],
+    "image_front_small_url": "https://static.openfoodfacts.org/images/products/761/340/437/7888/front_fr.8.200.jpg",
+    "image_front_url": "https://static.openfoodfacts.org/images/products/761/340/437/7888/front_fr.8.400.jpg",
+    "nutrition_score_debug": "no score when the product does not have a category",
+    "_id": "7613404377888",
+    "nutrition_data_per": "100g",
+    "images": {
+      "3": {
+        "sizes": {
+          "100": {
+            "h": 100,
+            "w": 72
+          },
+          "full": {
+            "h": 1200,
+            "w": 863
+          },
+          "400": {
+            "w": 288,
+            "h": 400
+          }
+        },
+        "uploaded_t": 1609877302,
+        "uploader": "kiliweb"
+      },
+      "2": {
+        "sizes": {
+          "full": {
+            "h": 1200,
+            "w": 1000
+          },
+          "400": {
+            "h": 400,
+            "w": 333
+          },
+          "100": {
+            "h": 100,
+            "w": 83
+          }
+        },
+        "uploaded_t": 1604825748,
+        "uploader": "kiliweb"
+      },
+      "nutrition_fr": {
+        "rev": "10",
+        "white_magic": null,
+        "normalize": null,
+        "x1": "-1",
+        "y2": "-1",
+        "x2": "-1",
+        "imgid": "4",
+        "geometry": "0x0--1--1",
+        "coordinates_image_size": "full",
+        "sizes": {
+          "100": {
+            "h": 50,
+            "w": 100
+          },
+          "full": {
+            "w": 1080,
+            "h": 538
+          },
+          "400": {
+            "w": 400,
+            "h": 199
+          },
+          "200": {
+            "h": 100,
+            "w": 200
+          }
+        },
+        "y1": "-1",
+        "angle": 0
+      },
+      "1": {
+        "uploader": "kiliweb",
+        "sizes": {
+          "400": {
+            "h": 400,
+            "w": 264
+          },
+          "full": {
+            "h": 1200,
+            "w": 791
+          },
+          "100": {
+            "h": 100,
+            "w": 66
+          }
+        },
+        "uploaded_t": 1604825747
+      },
+      "4": {
+        "uploader": "kiliweb",
+        "sizes": {
+          "full": {
+            "h": 538,
+            "w": 1080
+          },
+          "400": {
+            "w": 400,
+            "h": 199
+          },
+          "100": {
+            "w": 100,
+            "h": 50
+          }
+        },
+        "uploaded_t": 1609877303
+      },
+      "front_fr": {
+        "normalize": null,
+        "white_magic": null,
+        "rev": "8",
+        "angle": 0,
+        "y1": "-1",
+        "sizes": {
+          "100": {
+            "h": 100,
+            "w": 72
+          },
+          "400": {
+            "h": 400,
+            "w": 288
+          },
+          "full": {
+            "w": 863,
+            "h": 1200
+          },
+          "200": {
+            "w": 144,
+            "h": 200
+          }
+        },
+        "coordinates_image_size": "full",
+        "geometry": "0x0--1--1",
+        "x1": "-1",
+        "x2": "-1",
+        "imgid": "3",
+        "y2": "-1"
+      }
+    },
+    "unknown_nutrients_tags": [],
+    "interface_version_modified": "20150316.jqm2",
+    "traces_tags": [],
+    "creator": "kiliweb",
+    "languages_codes": {
+      "fr": 3
+    },
+    "pnns_groups_1_tags": [
+      "unknown",
+      "missing-category"
+    ],
+    "ecoscore_grade": "unknown",
+    "allergens": "",
+    "product_name_fr": "Pois chiches abricot",
+    "traces_from_ingredients": ""
+  }
+}]
