@@ -3,6 +3,9 @@ import {FoodProduct} from "../models/FoodProduct";
 import axios from 'axios';
 import validateFoodProduct from "../utils/ValidateFoodProduct"
 
+/**
+ * Implementation of the DataSource interface using OpenFoodFacts API to get data
+ */
 export class OpenFoodFactsDataSource implements DataSource {
     dataSourceIndicator: string = "Open Food Facts"
     url: String = 'https://world.openfoodfacts.org/api/v0/product/'

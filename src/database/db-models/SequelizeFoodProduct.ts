@@ -4,8 +4,8 @@ import {DataType, DataTypes} from "sequelize";
 
 
 /**
- * Model used by Sequelize to store FoodProduct objects in the database. This is not the same thing as a regular FoodProduct,
- * which is used to return data to the front-end.
+ * Model used by Sequelize to store FoodProduct objects in the database. This is not the same thing
+ * as a regular FoodProduct model, which is used to return data to the front-end.
  */
 @Table({
     timestamps: false,

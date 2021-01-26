@@ -3,6 +3,9 @@ import {FoodProduct} from "../models/FoodProduct";
 import axios from 'axios';
 import validateFoodProduct from "../utils/ValidateFoodProduct"
 
+/**
+ * Implementation of the DataSource interface using FoodRepo API for data
+ */
 export class FoodRepoDataSource implements DataSource {
     dataSourceIndicator: string = "FoodRepo"
     url: String = 'https://www.foodrepo.org/api/v3/products?barcodes='

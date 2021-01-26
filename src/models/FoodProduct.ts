@@ -44,10 +44,6 @@ export class FoodProduct {
     weight: number
 
     imageUrl: string
-    static toStringTag: "foodProduct";
-
-
-
 
     constructor(eanBarcode: string,
                 label: string,
