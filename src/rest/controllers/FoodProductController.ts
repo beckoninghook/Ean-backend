@@ -61,38 +61,29 @@ export const getBarcode = async (req, res, next) => {
 async function searchBarcode(barcode: number, datasources: DataSource[]): Promise<FoodProduct | null> {
     const timer = performance.now()
     let result: FoodProduct = null;
-    let useDatabase = false;
-    if (datasources.find(datasource => {
-            return datasource.dataSourceIndicator === "EAN-Backend Database"
-        }
-    ) != null) {
-        useDatabase = true;
-    }
-        for (let d of datasources) {
-            const dataSourceTimer = performance.now()
-            //Because DataSource is an interface, we can call this method on each data source object without
-            // any assumptions about the implementation.
-            let dataSourceResults = await d.searchBarcode(barcode)
-            const dataSourceTimerEnd = performance.now()
-            console.log(`Received ${dataSourceResults.length} results from data source: ${d.dataSourceIndicator} in ${Math.round(((dataSourceTimerEnd - dataSourceTimer) + Number.EPSILON) * 100) / 100} milliseconds.`)
-            if (dataSourceResults.length > 0) {
-                if (useDatabase) {
-                    for (let result of dataSourceResults) {
-                        const foodData = new SequelizeFoodProduct(result);
-                        //Before saving to the database do a simple check to see if it doesnt already exists
-                        let food = await SequelizeFoodProduct.findOne({where: {eanBarcode: result.eanBarcode}})
-                        if (!food) {
-                            console.log("Saving product to database");
-                            foodData.save();
-                        }
-                    }
+    for (let d of datasources) {
+        const dataSourceTimer = performance.now()
+        //Because DataSource is an interface, we can call this method on each data source object without
+        // any assumptions about the implementation.
+        let dataSourceResults = await d.searchBarcode(barcode)
+        const dataSourceTimerEnd = performance.now()
+        console.log(`Received ${dataSourceResults.length} results from data source: ${d.dataSourceIndicator} in ${Math.round(((dataSourceTimerEnd - dataSourceTimer) + Number.EPSILON) * 100) / 100} milliseconds.`)
+        if (dataSourceResults.length > 0) {
+            for (let result of dataSourceResults) {
+                const foodData = new SequelizeFoodProduct(result);
+                //Before saving to the database do a simple check to see if it doesnt already exists
+                let food = await SequelizeFoodProduct.findOne({where: {eanBarcode: result.eanBarcode}})
+                if (!food) {
+                    console.log("Saving product to database");
+                    foodData.save();
                 }
-                result = dataSourceResults[0]
             }
-            if (result != null) {
-                break;
-            }
+            result = dataSourceResults[0]
         }
+        if (result != null) {
+            break;
+        }
+    }
     const timerEnd = performance.now()
     console.log(`Search took ${Math.round(((timerEnd - timer) +
         Number.EPSILON) * 100) / 100} milliseconds in total.`)

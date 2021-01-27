@@ -31,7 +31,6 @@ export class FoodRepoDataSource implements DataSource {
     private PREFERRED_IMAGE_SIDE = "front"
     private PREFERRED_IMAGE_SIZE = "medium"
 
-
     async searchBarcode(barcode: number): Promise<FoodProduct[]> {
         try {
             let info = await axios.get(this.url + barcode.toString(), {

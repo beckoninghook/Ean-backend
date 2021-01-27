@@ -5,27 +5,15 @@ const port: number = Config.DEFAULT_PORT; // default port to listen
 const serverStartTimer: number = performance.now()
 
 import {database} from "./database/database"
-import {testDatabase} from "./database/testDatabase"
 
 import app from "./application"
 
-export const setupDB = (isTestMode: boolean) => {
-    let db = database;
-    let syncOptions;
-    if (isTestMode) {
-        console.log("Connecting to test database.")
-        db = testDatabase;
-        syncOptions = {
-            force: true,
-        }
-    } else {
-        syncOptions = {
-            alter: true,
-        }
-    }
+export const setupDB = () => {
     return database.authenticate()
         .then(() => {
-            return db.sync(syncOptions)
+            return database.sync({
+                alter: true,
+            })
         })
         .catch(() => {
             return Promise.reject("Could not connect to database.")
@@ -33,7 +21,7 @@ export const setupDB = (isTestMode: boolean) => {
 }
 
 const launch = () => {
-    setupDB(false)
+    setupDB()
         .then(() => {
             console.log("Connected to database.")
             app.listen(port, () => {

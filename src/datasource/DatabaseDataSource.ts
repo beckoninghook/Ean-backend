@@ -9,7 +9,11 @@ export class DatabaseDataSource implements DataSource {
     dataSourceIndicator = "EAN-Backend Database"
 
     async searchBarcode(barcode: number): Promise<FoodProduct[]> {
-        const data = await SequelizeFoodProduct.findOne({where:{eanBarcode: barcode.toString()}})
+        const data = await SequelizeFoodProduct.findOne({
+            where: {
+                eanBarcode: barcode.toString()
+            }
+        })
         if (data) {
             return [data]
         } else {

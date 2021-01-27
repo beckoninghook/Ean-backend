@@ -13,7 +13,6 @@ import {DataType, DataTypes} from "sequelize";
     modelName: "foodproduct",
 })
 export class SequelizeFoodProduct extends Model<SequelizeFoodProduct> {
-
     @PrimaryKey
     @Column
     eanBarcode: string
